@@ -1,4 +1,4 @@
-# fantasyLeague
+# fantasyCards
 
 ## Project board
 https://github.com/users/Arnaud97234/projects/1
