@@ -7,7 +7,7 @@ const cardPriceSchema = mongoose.Schema({
 
 const cardSchema = mongoose.Schema({
     teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'},
-    rarity: String,
+    rarity: Number,
     supply: Number,
     picture: String,
     stock: Number,
