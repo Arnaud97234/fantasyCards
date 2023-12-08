@@ -6,7 +6,7 @@ const packPriceSchema = mongoose.Schema({
 })
 
 const packSchema = mongoose.Schema({
-    rarity: String,
+    rarity: Number,
     supply: Number,
     packPrices: [packPriceSchema]
 })
