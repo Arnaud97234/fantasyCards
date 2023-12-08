@@ -26,7 +26,8 @@ https://github.com/users/Arnaud97234/projects/1
 https://www.figma.com/file/kzA0Qj7qFVVUWdQVs99I6y/Untitled?type=design&node-id=18-408&mode=design&t=BYYqIgnUUU6iCKVy-0
 
 ## DB Schema
-![fantasyCards_dbSchema](https://github.com/Arnaud97234/fantasyCards/assets/13007150/5f5072e8-f831-4f09-8c5e-b66073a080ae)
+![fantasyCards_dbSchema](![fantasyCard_dbSchema](https://github.com/Arnaud97234/fantasyCards/assets/13007150/55c64fbe-c610-4730-9412-359c8de85571)
+)
 
 ## Sport API
 https://www.api-football.com/documentation-v3  
