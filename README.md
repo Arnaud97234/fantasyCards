@@ -4,7 +4,7 @@
 https://github.com/users/Arnaud97234/projects/1
 
 ## Fonction List
-![Fonction List](https://github.com/Arnaud97234/fantasyCards/docs/FonctionList.md)
+![Fonction List](https://github.com/Arnaud97234/fantasyCards/blob/main/docs/FonctionList.md)
 
 ### Github process
 - git checkout main
