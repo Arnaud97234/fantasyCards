@@ -6,7 +6,6 @@ const gameSchema = mongoose.Schema({
     startDate: Date,
     endDate: Date,
     status: String,
-    eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'},
     winner: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'}
 })
 

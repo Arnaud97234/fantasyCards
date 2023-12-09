@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-import 'dotenv/config'
+require('dotenv').config()
+
 
 const connectionString = process.env.CONNECTION_MONGOOSE
 

@@ -6,7 +6,8 @@ const cardPriceSchema = mongoose.Schema({
 })
 
 const cardSchema = mongoose.Schema({
-    teamId: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'},
+    teamId: Number,
+    name: String,
     rarity: Number,
     supply: Number,
     picture: String,
@@ -15,6 +16,6 @@ const cardSchema = mongoose.Schema({
     cardPrices: [cardPriceSchema]
 })
 
-const Card = mongoose.model('cards', packSchema)
+const Card = mongoose.model('cards', cardSchema)
 
 module.exports = Card
