@@ -1,7 +1,7 @@
 # fantasyCards
 
 ## Project board
-[https://github.com/users/Arnaud97234/projects/1](https://trello.com/b/LnLjujMO/fantasycards)
+[Trello](https://trello.com/b/LnLjujMO/fantasycards)
 
 ## Fonction List
 [Fonction List](https://github.com/Arnaud97234/fantasyCards/blob/main/docs/FonctionList.md)
