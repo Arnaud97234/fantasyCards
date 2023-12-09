@@ -5,7 +5,7 @@ const eventSchema = mongoose.Schema({
     startDate: Date,
     endDate: Date,
     status: String,
-    userIds: [String]
+    gameId: {type: mongoose.Schema.Types.ObjectId, ref: 'games'}
 })
 
 const Event = mongoose.model('events', eventSchema)

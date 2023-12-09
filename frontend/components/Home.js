@@ -1,12 +1,32 @@
 import styles from '../styles/Home.module.css';
+import Header from './Header'
 
 function Home() {
   return (
     <div>
+      <Header />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Coucou</a>
-        </h1>
+        <div className={styles.box}>
+          <div className={styles.boxDesc}>
+            <h2 className={styles.boxTitle}>Create your team</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
+          </div>
+          <img style={{ width: 1600, height: 250, minWidth: 300, maxWidth: 400 }} className='boxPicture' src='./images/boxPicture_1.jpg' alt='Create your team' />
+        </div>
+        <div className={styles.box}>
+          <img style={{ width: 1600, height: 250, minWidth: 300, maxWidth: 400 }} className='boxPicture' src='./images/boxPicture_2.png' alt='Create your team' />
+          <div className={styles.boxDesc}>
+            <h2 className={styles.boxTitle}>Grow your team</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
+          </div>
+        </div>
+        <div className={styles.box}>
+          <div className={styles.boxDesc}>
+            <h2 className={styles.boxTitle}>Grow your team</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
+          </div>
+          <img style={{ width: 1600, height: 250, minWidth: 150, maxWidth: 180 }} className='boxPicture' src='./images/boxPicture_3.png' alt='Create your team' />
+        </div>
       </main>
     </div>
   );
