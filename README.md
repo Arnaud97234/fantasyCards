@@ -23,7 +23,7 @@
 - Give approval
 
 ## Design
-https://www.figma.com/file/kzA0Qj7qFVVUWdQVs99I6y/Untitled?type=design&node-id=18-408&mode=design&t=BYYqIgnUUU6iCKVy-0
+[Figma](https://www.figma.com/file/kzA0Qj7qFVVUWdQVs99I6y/Untitled?type=design&node-id=18-408&mode=design&t=BYYqIgnUUU6iCKVy-0)
 
 ## DB Schema
 ![image](https://github.com/Arnaud97234/fantasyCards/assets/13007150/e282a3a1-8dcc-45eb-ae00-e8829e757bb6)
