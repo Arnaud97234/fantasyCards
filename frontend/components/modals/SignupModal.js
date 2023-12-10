@@ -26,7 +26,7 @@ function SignupModal() {
           setSignupUsername('')
           setSignupEmail('')
           setSignupPassword('')
-          addUser({ username: signupUsername, isConnected: true })
+          addUser({token: data.token, email: signupEmail, username: signupUsername })
           
         } else {
             setErrorMessage(data.error)

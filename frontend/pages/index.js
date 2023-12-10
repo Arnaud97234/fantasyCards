@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 
 function Index() {
   useSelector((state) => {
-    if (state.users.value.isConnected) {
+    console.log(state)
+    if (state.users.value.token) {
         window.location.href='/dashboard'
     }
 })
