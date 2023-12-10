@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
     email: String,
-    userName: String,
+    username: String,
     password: String,
     token: String,
+    credits: Number,
     eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'}
 })
 
