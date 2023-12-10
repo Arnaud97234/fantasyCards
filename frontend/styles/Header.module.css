@@ -9,13 +9,13 @@
     color: #F2AA4C;
 }
 
-.buttonsContainer {
+.navItems {
     display: flex;
     justify-content: space-between;
     padding: 4px;
 }
 
-.button {
+.item {
     padding: 4px 20px;
     margin: 2px 20px ;
     font-family: 'Bangers';
