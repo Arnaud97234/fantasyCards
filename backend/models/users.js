@@ -4,9 +4,11 @@ const userSchema = mongoose.Schema({
     email: String,
     username: String,
     password: String,
+    stock: Number,
     token: String,
     credits: Number,
-    eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'}
+    eventsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'events'}],
+    cardsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'cards'}]
 })
 
 const User = mongoose.model('users', userSchema)

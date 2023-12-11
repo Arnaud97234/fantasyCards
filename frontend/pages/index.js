@@ -1,12 +1,15 @@
 import Login from '../components/Login'
 import Header from '../components/Header'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router';
 
 function Index() {
+
+  const router = useRouter()
   useSelector((state) => {
     console.log(state);
     if (state.users.value.token) {
-        window.location.href='/home'
+        router.push('/home')
     }
   });
   return (
