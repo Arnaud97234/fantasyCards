@@ -89,3 +89,7 @@
     font-family: 'Calistoga';
     font-size: 14px;
 }
+
+.headerLogo:hover{
+    cursor: pointer;
+}

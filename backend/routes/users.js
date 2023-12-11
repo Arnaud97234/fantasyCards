@@ -27,7 +27,9 @@ router.post('/signup', (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: hash,
-        token: token
+        token: token,
+        credits: 3000,
+        
       })
       newUser.save().then(newDoc => {
         res.json({ result: true, token: newDoc.token })

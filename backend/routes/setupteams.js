@@ -1,24 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-require('dotenv').config()
+require("dotenv").config();
 
 require('../models/connection')
 const Team = require('../models/teams')
 const Card = require('../models/cards')
 const Game = require('../models/games')
 
-const apiHost = process.env.RAPIDAPI_HOST
-const apiKey = process.env.RAPIDAPI_KEY
+const apiHost = process.env.RAPIDAPI_HOST;
+const apiKey = process.env.RAPIDAPI_KEY;
 
 /* GET teams listing and add it to Database*/
 // FIXME: Make league parameter dynamic (fetch all leagues ids wanted)
 router.get('/setTeams', (req, res) =>  {
   fetch('https://v3.football.api-sports.io/teams?league=61&season=2023', {
     headers: {
-        'x-rapidapi-host': apiHost,
-        'x-rapidapi-key': apiKey
-    }
+      "x-rapidapi-host": apiHost,
+      "x-rapidapi-key": apiKey,
+    },
   })
   .then(response => response.json())
   .then(teamsList => {
@@ -32,12 +32,16 @@ router.get('/setTeams', (req, res) =>  {
       })
       newTeam.save().then(console.log('teams added'))
     })
-  }).then(() => {
-     Team.find().then(data => res.json({
-      result: true, message: `${data.length} Teams successfully added!` 
-    }))})
-    .catch(err => console.error(err))
-})
+    .then(() => {
+      Team.find().then((data) =>
+        res.json({
+          result: true,
+          message: `${data.length} Teams successfully added!`,
+        })
+      );
+    })
+    .catch((err) => console.error(err));
+})});
 
 /* GET players for teams that are in db */
 // FIXME: Make team parametter dynamic (fetch all team ids that are in db)
