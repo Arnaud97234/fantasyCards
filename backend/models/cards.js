@@ -9,9 +9,8 @@ const cardSchema = mongoose.Schema({
     teamId: Number,
     name: String,
     rarity: Number,
-    supply: Number,
-    picture: String,
     stock: Number,
+    picture: String,
     eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'},
     cardPrices: [cardPriceSchema]
 })
