@@ -5,12 +5,14 @@
     justify-content: space-evenly;
     align-items: center;
     background-color: #36393B;
+    padding: 0 20px;
 }
 
 .title {
     font-family: 'Bangers';
     font-size: 22px;
     color: #F2AA4C;
+    font-weight: lighter;
 }
 
 .homeContent {
@@ -19,8 +21,9 @@
     flex-direction: column;
     align-items: center;
     background-color: white;
-    padding: 20px;
     width: 100%;
+    padding: 0 20px;
+
 }
 
 .infoGamesContainer {
@@ -32,67 +35,63 @@
     height: 100%;
 }
 
-.infoContainer {
+.box {
     display: flex;
     flex-direction: column;
     background-color: #36393B;
-    padding: 20px;
+    padding-bottom: 20px;
     justify-content: space-evenly;
     align-items: center;
-    width: 30%;
-    height:max-content;
+    width: 100%;
+    height: 100%;
 }
 
 .contentTitle {
     font-family: 'Bangers';
     color: #F2AA4C;
     font-size: 16px;
+    font-weight: lighter;
 }
 
-.infoContent {
+.content {
     display: flex;
     flex-direction: column;
+    align-self:flex-start;
+    padding: 10px;
 }
 
 .contentItem {
     color: white;
     font-family: 'Bangers';
+    font-weight: lighter;
 }
 
-.gamesContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: #36393B;
-    padding: 20px;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 60%;
-}
-
-.gamesContent {
-    display: flex;
-    flex-direction: column;
-    background-color: #36393B;
-    padding: 20px
-}
-
-.homePageButton {
+.contentButton {
     background-color:  #F2AA4C;
     font-family: 'Bangers';
     color: white;
     border-radius: 2px;
     border: none;
     padding: 10px 20px;
+    align-self: flex-end;
+    margin-right: 20px;
+    font-weight: lighter;
 }
 
-.inventoryContent {
+.inventoryContainer {
     display: flex;
     flex-direction: column;
     background-color: #36393B;
-    padding: 20px;
-    justify-content: space-evenly;
-    align-items: center;
     width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
+#infoBox {
+    margin-right: 10px;
+}
 
+#gameBox {
+    margin-left: 10px;
+}

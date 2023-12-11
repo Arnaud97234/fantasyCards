@@ -7,7 +7,6 @@ function Index() {
 
   const router = useRouter()
   useSelector((state) => {
-    console.log(state);
     if (state.users.value.token) {
         router.push('/home')
     }
