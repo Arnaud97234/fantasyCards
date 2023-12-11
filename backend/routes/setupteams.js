@@ -62,7 +62,10 @@ router.get('/setCards', function(req, res) {
           stock: 25,
           picture: e.photo,
           eventId: null,
-          cardPrices: null 
+          cardPrices: [
+            {userId:'6576d0b8dbcfb883c78bd2fe', price:0},
+            {userId:'6576d0b8dbcfb883c78bd2fe', price:0}
+          ]
         })
         newCard.save()
     })
