@@ -1,4 +1,4 @@
-import styles from '../styles/Dashboard.module.css'
+import styles from '../styles/Home.module.css'
 import { useSelector } from 'react-redux'
 
 function Home() {

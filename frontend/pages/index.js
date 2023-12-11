@@ -4,17 +4,17 @@ import { useSelector } from 'react-redux'
 
 function Index() {
   useSelector((state) => {
-    console.log(state)
+    console.log(state);
     if (state.users.value.token) {
         window.location.href='/home'
     }
-})
+  });
   return (
     <>
-    <Header />
-    <Login />
-  </>
-  )
+      <Header />
+      <Login />
+    </>
+  );
 }
 
 export default Index;
