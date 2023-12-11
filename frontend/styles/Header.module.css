@@ -28,11 +28,13 @@
 
 .modal {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: transparent;
 }
 
-.modalContainer {
+/* .modalContainer {
     margin: 40px;
     background-color: white;
     width: 30%;
@@ -44,7 +46,7 @@
     max-width: 400px;
     position: absolute;
     border-radius: 4px;
-}
+} */
 
 .input {
     outline:none;
@@ -68,6 +70,7 @@
 }
 
 .modalTitle {
+    text-align: center;
     font-family: 'Bangers';
     color: black;
     font-weight: normal;

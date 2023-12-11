@@ -34,7 +34,7 @@ function SigninModal() {
     return (
         <div className={styles.modal}>
             <main className={styles.modalContainer}>
-                <button className={styles.closeModalButton}>X</button>
+                {/* <button className={styles.closeModalButton}>X</button> */}
                 <h2 className={styles.modalTitle}>Sign in</h2>
                 <input className={styles.input} type='text' placeholder='email address' onChange={(e) => setSigninEmail(e.target.value)} value={signinEmail} />
                 <input className={styles.input} type='password' placeholder='password' onChange={(e) => setSigninPassword(e.target.value)} value={signinPassword} />

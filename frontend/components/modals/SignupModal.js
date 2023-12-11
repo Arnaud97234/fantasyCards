@@ -1,4 +1,4 @@
-import styles from '../../styles/Header.module.css'
+import styles from '../../styles/header.module.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addUserToStore } from '../../reducers/users'
@@ -37,15 +37,13 @@ function SignupModal() {
 
     return (
       <div className={styles.modal}>
-        <main className={styles.modalContainer}>
-            <button className={styles.closeModalButton}>X</button>
+            {/* <button className={styles.closeModalButton}>X</button> */}
             <h2 className={styles.modalTitle}>Sign up</h2>
             <input className={styles.input} type='text' placeholder='username' onChange={(e) => setSignupUsername(e.target.value)} value={signupUsername} />
             <input className={styles.input} type='text' placeholder='email address' onChange={(e) => setSignupEmail(e.target.value)} value={signupEmail} />
             <input className={styles.input} type='password' placeholder='password' onChange={(e) => setSignupPassword(e.target.value)} value={signupPassword} />
             <button className={styles.modalButton} onClick={() => handleSignup()}>Sign up</button>
             {errorMessage != '' && <span className={styles.error}>{errorMessage}</span>}
-        </main>
       </div>
     )
   }
