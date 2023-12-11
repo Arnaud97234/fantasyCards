@@ -1,20 +1,20 @@
-import Home from '../components/Home'
+import Login from '../components/Login'
 import Header from '../components/Header'
 import { useSelector } from 'react-redux'
 
 function Index() {
   useSelector((state) => {
-    console.log(state)
+    console.log(state);
     if (state.users.value.token) {
-        window.location.href='/dashboard'
+        window.location.href='/home'
     }
-})
+  });
   return (
     <>
-    <Header />
-    <Home />
-  </>
-  )
+      <Header />
+      <Login />
+    </>
+  );
 }
 
 export default Index;
