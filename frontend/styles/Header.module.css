@@ -34,20 +34,6 @@
   background-color: transparent;
 }
 
-/* .modalContainer {
-    margin: 40px;
-    background-color: white;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-width: 300px;
-    max-width: 400px;
-    position: absolute;
-    border-radius: 4px;
-} */
-
 .input {
   outline: none;
   margin: 20px;
@@ -60,9 +46,12 @@
 }
 
 .closeModalButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
+  width: 40px;
   align-self: flex-end;
-  padding: 12px 17px;
   border-radius: 50%;
   background-color: #36393b;
   color: #f2aa4c;
@@ -81,6 +70,7 @@
 }
 
 .modalButton {
+  justify-self: center;
   margin: 20px;
   font-family: "Bangers";
   height: 40px;

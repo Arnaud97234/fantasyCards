@@ -1,4 +1,4 @@
-import styles from '../../styles/header.module.css'
+import styles from '../../styles/Header.module.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { addUserToStore } from '../../reducers/users'
