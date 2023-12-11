@@ -1,33 +1,15 @@
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Dashboard.module.css'
+import { useSelector } from 'react-redux'
 
 function Home() {
-  return (
-    <div>
-      <main className={styles.main}>
-        <div className={styles.box}>
-          <div className={styles.boxDesc}>
-            <h2 className={styles.boxTitle}>Create your team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
-          </div>
-          <img style={{ width: 1600, height: 250, minWidth: 300, maxWidth: 400 }} className='boxPicture' src='./images/boxPicture_1.jpg' alt='Create your team' />
-        </div>
-        <div className={styles.box}>
-          <img style={{ width: 1600, height: 250, minWidth: 300, maxWidth: 400 }} className='boxPicture' src='./images/boxPicture_2.png' alt='Create your team' />
-          <div className={styles.boxDesc}>
-            <h2 className={styles.boxTitle}>Grow your team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
-          </div>
-        </div>
-        <div className={styles.box}>
-          <div className={styles.boxDesc}>
-            <h2 className={styles.boxTitle}>Grow your team</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue lacus viverra vitae congue eu. At varius vel pharetra vel. Aliquet bibendum Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lectus quam id leo in. Iaculis nunc sed augue</p>
-          </div>
-          <img style={{ width: 1600, height: 250, minWidth: 150, maxWidth: 180 }} className='boxPicture' src='./images/boxPicture_3.png' alt='Create your team' />
-        </div>
-      </main>
-    </div>
-  );
+    const username = useSelector((state) => state.users.value.username)
+
+    return (
+    <main className={styles.dashboardContainer}>
+        <h2 className={styles.title}>Dashboard</h2>
+        <p>Welcome {username}</p>
+    </main>
+    )
 }
 
-export default Home;
+export default Home
