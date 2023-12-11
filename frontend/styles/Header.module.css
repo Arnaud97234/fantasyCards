@@ -1,37 +1,37 @@
 .headerContainer {
-    width: 100%;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 100px;
-    font-family: 'Bangers';
-    font-size: 22px;
-    color: #F2AA4C;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 100px;
+  font-family: "Bangers";
+  font-size: 22px;
+  color: #f2aa4c;
 }
 
 .navItems {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
 }
 
 .item {
-    padding: 4px 20px;
-    margin: 2px 20px ;
-    font-family: 'Bangers';
-    font-size: 24px;
-    color: #F2AA4C;
-    background-color: white;
-    border: none;
-    cursor: pointer;
+  padding: 4px 20px;
+  margin: 2px 20px;
+  font-family: "Bangers";
+  font-size: 24px;
+  color: #f2aa4c;
+  background-color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
 }
 
 /* .modalContainer {
@@ -49,42 +49,46 @@
 } */
 
 .input {
-    outline:none;
-    margin: 20px;
-    height: 40px;
-    width: 80%;
-    font-family: 'Bangers';
-    color: #F2AA4C;
-    border: none;
-    border-bottom: 1px solid black;
+  outline: none;
+  margin: 20px;
+  height: 40px;
+  width: 80%;
+  font-family: "Bangers";
+  color: #f2aa4c;
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 .closeModalButton {
-    align-self: flex-end;
-    padding: 12px 17px;
-    border-radius: 50%;
-    background-color: #36393B;
-    color:#F2AA4C;
-    font-family: 'Bangers';
-    border: none;
+  height: 40px;
+  align-self: flex-end;
+  padding: 12px 17px;
+  border-radius: 50%;
+  background-color: #36393b;
+  color: #f2aa4c;
+  font-family: "Bangers";
+  border: none;
+}
+.closeModalButton:hover {
+  color: #f2aa4c !important;
 }
 
 .modalTitle {
-    text-align: center;
-    font-family: 'Bangers';
-    color: black;
-    font-weight: normal;
+  text-align: center;
+  font-family: "Bangers";
+  color: black;
+  font-weight: normal;
 }
 
 .modalButton {
-    margin: 20px;
-    font-family: 'Bangers';
-    height: 40px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    background-color: #F2AA4C;
-    color: white;
+  margin: 20px;
+  font-family: "Bangers";
+  height: 40px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2aa4c;
+  color: white;
 }
 
 .error {
