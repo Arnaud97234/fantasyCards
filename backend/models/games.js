@@ -1,14 +1,16 @@
 const mongoose = require('mongoose')
 
 const gameSchema = mongoose.Schema({
-    teamHomeId: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'},
-    teamAwayId: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'},
+    gameId: Number,
+    teamHomeId: Number,
+    teamAwayId: Number,
     startDate: Date,
     endDate: Date,
     status: String,
-    winner: {type: mongoose.Schema.Types.ObjectId, ref: 'teams'}
+    winnerTeamHome: Boolean,
+    winnerTeamAway: Boolean
 })
 
-const Game = mongoose.model('games', packSchema)
+const Game = mongoose.model('games', gameSchema)
 
 module.exports = Game
