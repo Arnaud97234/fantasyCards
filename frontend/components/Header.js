@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../reducers/users.js";
+import { Modal, Button } from 'antd';
 
 function Header() {
   const [signupVisible, setSignupVisible] = useState(false);
@@ -15,11 +16,19 @@ function Header() {
   const router = useRouter();
 
   const handleSignup = () => {
-    setSignupVisible(!signupVisible);
-  };
+    setSignupVisible(true)
+  }
 
   const handleSignin = () => {
-    setSigninVisible(!signinVisible);
+    setSigninVisible(true)
+  }
+
+  const handleCancelSignUp = () => {
+    setSignupVisible(false);
+  };
+
+  const handleCancelSignIn = () => {
+    setSigninVisible(false);
   };
 
   const navItems = () => {
@@ -85,11 +94,21 @@ function Header() {
           }}
         />
         {navItems()}
-      </main>
-      {signupVisible && <SignupModal />}
-      {signinVisible && <SigninModal />}
-    </div>
-  );
-}
+        </main>
+        <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
+          <SignupModal />
+        </Modal>
+        <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
+         <SigninModal />
+        </Modal>
+      </div>
+    );
+  }
 
-export default Header;
+  const CustomCloseIcon = () => {
+    return (
+      <Button className={styles.closeModalButton}>X</Button>
+    );
+  };
+  
+  export default Header;
