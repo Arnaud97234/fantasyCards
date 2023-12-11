@@ -1,15 +1,21 @@
 import styles from '../styles/Header.module.css'
 import SignupModal from './modals/SignupModal.js'
+import SigninModal from './modals/SigninModal.js'
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 function Header() {
 
-  const [isVisible, setIsVisible] = useState(false)
+  const [signupVisible, setSignupVisible] = useState(false)
+  const [signinVisible, setSigninVisible] = useState(false)
   const isConnected = useSelector((state) => state.users.value.token)
 
   const handleSignup = () => {
-    setIsVisible(!isVisible)
+    setSignupVisible(!signupVisible)
+  }
+
+  const handleSignin = () => {
+    setSigninVisible(!signinVisible)
   }
 
   const navItems = () => {
@@ -23,12 +29,14 @@ function Header() {
      )
     } else {
       return(
-    <div className={styles.navItems}>
-            <button onClick={() => {
-              handleSignup()
-              }} className={styles.item} id='signup_button'>Sign up</button>
-            <button className={styles.item} id='signin_button'>Sign in</button>
-          </div>)
+            <div className={styles.navItems}>
+              <button onClick={() => {
+                handleSignup()
+                }} className={styles.item} id='signup_button'>Sign up</button>
+              <button onClick={() => {
+                handleSignin()
+              }} className={styles.item} id='signin_button'>Sign in</button>
+            </div>)
     }
   }
 
@@ -38,7 +46,8 @@ function Header() {
         <img className='headerLogo' src='./images/headerLogo.svg' alt='fantasyCard' />
         {navItems()}
         </main>
-        {isVisible && <SignupModal />}
+        {signupVisible && <SignupModal />}
+        {signinVisible && <SigninModal />}
       </div>
     );
   }

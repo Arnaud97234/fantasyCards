@@ -26,13 +26,13 @@
     cursor: pointer;
 }
 
-.signupModal {
+.modal {
     display: flex;
     justify-content: center;
     background-color: transparent;
 }
 
-.signupContainer {
+.modalContainer {
     margin: 40px;
     background-color: white;
     width: 30%;
