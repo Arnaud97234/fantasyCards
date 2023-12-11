@@ -28,6 +28,8 @@
 ## DB Schema
 ![image](https://github.com/Arnaud97234/fantasyCards/assets/13007150/e282a3a1-8dcc-45eb-ae00-e8829e757bb6)
 
+### db dev data (import in Mongo)
+[fantasyCards_collections.zip](https://github.com/Arnaud97234/fantasyCards/files/13635361/fantasyCards_collections.zip)
 
 ## Sport API
 https://www.api-football.com/documentation-v3  
