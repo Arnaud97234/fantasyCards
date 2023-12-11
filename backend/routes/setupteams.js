@@ -42,7 +42,7 @@ router.get('/setTeams', (req, res) =>  {
 /* GET players for teams that are in db */
 // FIXME: Make team parametter dynamic (fetch all team ids that are in db)
 router.get('/setCards', function(req, res) {
-  fetch('https://v3.football.api-sports.io/players/squads?team=116', {
+  fetch('https://v3.football.api-sports.io/players/squads?team=80', {
   headers: {
     'x-rapidapi-host': apiHost,
     'x-rapidapi-key': apiKey
@@ -58,7 +58,10 @@ router.get('/setCards', function(req, res) {
           stock: 25,
           picture: e.photo,
           eventId: null,
-          cardPrices: null 
+          cardPrices: [
+            {userId:'6576d0b8dbcfb883c78bd2fe', price:0},
+            {userId:'6576d0b8dbcfb883c78bd2fe', price:0}
+          ]
         })
         newCard.save()
     })
