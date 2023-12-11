@@ -2,13 +2,19 @@ import styles from '../styles/Header.module.css'
 import SignupModal from './modals/SignupModal.js'
 import SigninModal from './modals/SigninModal.js'
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+import { logout } from '../reducers/users.js'
+
 
 function Header() {
 
   const [signupVisible, setSignupVisible] = useState(false)
   const [signinVisible, setSigninVisible] = useState(false)
   const isConnected = useSelector((state) => state.users.value.token)
+
+  const dispatch = useDispatch();
+  const router = useRouter()
 
   const handleSignup = () => {
     setSignupVisible(!signupVisible)
@@ -25,6 +31,7 @@ function Header() {
         <button className={styles.item}>Game</button>
         <button className={styles.item}>Market</button>
         <button className={styles.item}>Inventory</button>
+        <button className={styles.item} onClick={() => { router.push('/'); dispatch(logout()); }}>Logout</button>
       </div>
      )
     } else {
