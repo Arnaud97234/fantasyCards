@@ -27,8 +27,7 @@ function SigninModal() {
             if(data.result) {
                 setSigninEmail('')
                 setSigninPassword('')
-                console.log(data.cardsList)
-                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList })
+                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList, eventsList: data.eventsList })
                 router.push("/home");
             } else {
                 setErrorMessage(data.error)

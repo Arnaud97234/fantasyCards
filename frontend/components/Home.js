@@ -6,6 +6,7 @@ function Home() {
     const [username, setUsername] = useState('')
     const [credits, setCredits] = useState(0)
     const [cards, setCards] = useState([])
+    const [events, setEvents] = useState([])
 
     const userToken = useSelector((state) => state.users.value.token)
 
@@ -14,6 +15,7 @@ function Home() {
             setUsername(data.username)
             setCredits(data.credits)
             setCards(data.cards)
+            setEvents(data.events)
         }) }
        }, [])
 
@@ -36,7 +38,7 @@ function Home() {
                             <h3 className={styles.contentTitle}>Games</h3>
                             <div className={styles.content}>
                                 <span className={styles.contentItem}>Ongoing games</span>
-                                <span className={styles.contentItem}>My events</span>
+                                <span className={styles.contentItem}>My events: {events.length}</span>
                             </div>
                             <button className={styles.contentButton}>View more</button>
                         </div>
