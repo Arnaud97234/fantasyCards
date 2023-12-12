@@ -2,11 +2,14 @@ import styles from '../../styles/Header.module.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../reducers/users'
+import { useRouter } from "next/router";
 
 function SigninModal() {
     const [signinPassword, setSigninPassword] = useState('')
     const [signinEmail, setSigninEmail] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+
+    const router = useRouter();
 
     const dispatch = useDispatch()
     const addUser = (user) => {
@@ -26,6 +29,7 @@ function SigninModal() {
                 setSigninPassword('')
                 console.log(data.cardsList)
                 addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList })
+                router.push("/home");
             } else {
                 setErrorMessage(data.error)
             }
