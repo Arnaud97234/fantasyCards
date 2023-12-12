@@ -31,6 +31,7 @@
 
 ### db dev data (import in Mongo)
 [fantasyCards_collections.zip](https://github.com/Arnaud97234/fantasyCards/files/13635361/fantasyCards_collections.zip)
+
 See .env.example for required env var
 
 ## Sport API
