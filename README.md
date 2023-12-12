@@ -11,6 +11,7 @@
 - git pull --rebase origin main
 - git checkout -b feature/task
 - git add . && git commit -m "message"
+- git rebase main
 - git push origin feature/task
 -> Create PR
 -> Review
@@ -30,6 +31,7 @@
 
 ### db dev data (import in Mongo)
 [fantasyCards_collections.zip](https://github.com/Arnaud97234/fantasyCards/files/13635361/fantasyCards_collections.zip)
+See .env.example for required env var
 
 ## Sport API
 https://www.api-football.com/documentation-v3  
