@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Login from "../components/Login";
 
-function loginPage() {
+function LoginPage() {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ function loginPage() {
   );
 }
 
-export default loginPage;
+export default LoginPage;

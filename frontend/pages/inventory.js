@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Inventory from "../components/Inventory";
 
-function inventoryPage() {
+function InventoryPage() {
   return (
     <>
       <Header />
@@ -10,4 +10,4 @@ function inventoryPage() {
   );
 }
 
-export default inventoryPage;
+export default InventoryPage;
