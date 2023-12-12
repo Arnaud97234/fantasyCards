@@ -11,7 +11,7 @@ const cardSchema = mongoose.Schema({
     rarity: Number,
     stock: Number,
     picture: String,
-    eventId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'},
+    eventsId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'},
     cardPrices: [cardPriceSchema]
 })
 

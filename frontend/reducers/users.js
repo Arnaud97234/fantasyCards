@@ -19,7 +19,9 @@ export const usersSlice = createSlice({
             state.value.token = null
             state.value.username = null
             state.value.email = null
-        },
+            state.value.cardsList = null
+            state.value.eventsList = null
+        }
     }
 })
 

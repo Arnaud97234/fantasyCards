@@ -64,7 +64,8 @@ router.post('/signin', (req, res) => {
 })
 
 router.get('/user/:token', (req, res) => {
-  User.findOne({ token: req.params.token }).then(data => {
+  User.findOne({ token: req.params.token })
+  .then(data => {
     res.json({ result: true, username: data.username, credits: data.credits, cards: data.cardsId, events: data.eventsId })
   })
 })
