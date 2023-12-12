@@ -4,11 +4,12 @@ import Head from 'next/head';
 import { Provider } from 'react-redux'
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import users from '../reducers/users'
+import events from '../reducers/events';
 import { persistStore, persistReducer } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import storage from 'redux-persist/lib/storage'
 
-const reducers = combineReducers({users})
+const reducers = combineReducers({users, events})
 const persistConfig = { key: 'fantasyCards', storage }
 
 const store = configureStore({
