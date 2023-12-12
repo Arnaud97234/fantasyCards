@@ -2,12 +2,15 @@ import styles from '../../styles/Header.module.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../reducers/users'
+import { useRouter } from "next/router";
 
 function SignupModal() {
     const [signupUsername, setSignupUsername] = useState('')
     const [signupPassword, setSignupPassword] = useState('')
     const [signupEmail, setSignupEmail] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+
+    const router = useRouter();
 
     const dispatch = useDispatch()
     const addUser = (newUser) => {
@@ -27,7 +30,7 @@ function SignupModal() {
           setSignupEmail('')
           setSignupPassword('')
           addUser({token: data.token, email: signupEmail, username: signupUsername })
-          
+          router.push("/home");
         } else {
             setErrorMessage(data.error)
         }
