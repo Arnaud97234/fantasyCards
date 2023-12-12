@@ -61,7 +61,7 @@ router.get('/setCards', function(req, res) {
           rarity: 3,
           stock: 25,
           picture: e.photo,
-          eventId: null,
+          eventsId: null,
           cardPrices: [
             {userId:'6576d0b8dbcfb883c78bd2fe', price:0},
             {userId:'6576d0b8dbcfb883c78bd2fe', price:0}

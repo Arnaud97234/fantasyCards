@@ -59,13 +59,14 @@ router.post('/signin', (req, res) => {
       return
     }
 
-    res.json({ result: true, token: data.token, username: data.username, cardsList: data.cardsId})
+    res.json({ result: true, token: data.token, username: data.username, cardsList: data.cardsId, eventsList: data.eventsId })
   })
 })
 
 router.get('/user/:token', (req, res) => {
-  User.findOne({ token: req.params.token }).then(data => {
-    res.json({ result: true, username: data.username, credits: data.credits, cards: data.cardsId })
+  User.findOne({ token: req.params.token })
+  .then(data => {
+    res.json({ result: true, username: data.username, credits: data.credits, cards: data.cardsId, events: data.eventsId })
   })
 })
 
