@@ -3,6 +3,7 @@ var router = express.Router();
 
 require('../models/connection');
 const User = require('../models/users');
+const Card = require('../models/cards')
 const { checkBody } = require('../modules/checkBody');
 const uid2 = require('uid2');
 const bcrypt = require('bcrypt')
@@ -58,13 +59,13 @@ router.post('/signin', (req, res) => {
       return
     }
 
-    res.json({result: true, token: data.token, username: data.username})
+    res.json({ result: true, token: data.token, username: data.username, cardsList: data.cardsId})
   })
 })
 
 router.get('/user/:token', (req, res) => {
   User.findOne({ token: req.params.token }).then(data => {
-    res.json({ result: true, username: data.username, credits: data.credits })
+    res.json({ result: true, username: data.username, credits: data.credits, cards: data.cardsId })
   })
 })
 

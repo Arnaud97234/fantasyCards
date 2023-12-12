@@ -1,7 +1,7 @@
 import styles from '../../styles/Header.module.css'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addUserToStore } from '../../reducers/users'
+import { login } from '../../reducers/users'
 
 function SigninModal() {
     const [signinPassword, setSigninPassword] = useState('')
@@ -10,7 +10,7 @@ function SigninModal() {
 
     const dispatch = useDispatch()
     const addUser = (user) => {
-        dispatch(addUserToStore(user))
+        dispatch(login(user))
     }
 
     const handleSignin = () => {
@@ -24,7 +24,8 @@ function SigninModal() {
             if(data.result) {
                 setSigninEmail('')
                 setSigninPassword('')
-                addUser({ token: data.token, email: signinEmail, username: data.username })
+                console.log(data.cardsList)
+                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList })
             } else {
                 setErrorMessage(data.error)
             }
