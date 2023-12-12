@@ -1,7 +1,7 @@
 import Header from '../components/Header'
 import Home from '../components/Home'
 
-function homePage() {
+function HomePage() {
   return (
     <>
         <Header />
@@ -10,4 +10,4 @@ function homePage() {
   )
 }
 
-export default homePage
+export default HomePage
