@@ -1,7 +1,7 @@
 import styles from '../../styles/Header.module.css'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { addUserToStore } from '../../reducers/users'
+import { login } from '../../reducers/users'
 
 function SignupModal() {
     const [signupUsername, setSignupUsername] = useState('')
@@ -11,7 +11,7 @@ function SignupModal() {
 
     const dispatch = useDispatch()
     const addUser = (newUser) => {
-        dispatch(addUserToStore(newUser))
+        dispatch(login(newUser))
     }
 
     const handleSignup = () => {

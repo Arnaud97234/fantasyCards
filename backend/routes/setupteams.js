@@ -84,7 +84,6 @@ router.get('/setGames', function(req, res) {
   .then(response => response.json())
   .then(gamesList => {
     gamesList.response.map((e) => {
-      console.log(e.fixture.id)
       const newGame = new Game({
         gamId: e.fixture.id,
         teamHomeId: e.teams.home.id,
