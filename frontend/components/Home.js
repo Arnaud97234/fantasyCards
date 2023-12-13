@@ -26,7 +26,6 @@ function Home() {
         }) }
     }, [])
 
-
     return (
         <div>
             <main className={styles.main}>
