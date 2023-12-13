@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 
 function Home() {
@@ -12,18 +12,27 @@ function Home() {
     const userToken = useSelector((state) => state.users.value.token)
 
     useEffect(() => {
-        return () => { fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
-            setUsername(data.username)
-            setCredits(data.credits)
-            setCards(data.cards)
-            setEvents(data.events)
-        }) }
-       }, [])
-    
+        return () => {
+            fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
+                setUsername(data.username)
+                setCredits(data.credits)
+                setCards(data.cards)
+                setEvents(data.events)
+            })
+        }
+    }, [])
+
     useEffect(() => {
-        return () => { fetch(`http://localhost:3000/events/Ongoing`).then(response => response.json()).then(data => {
-            setOngoingEvents(data.eventsList)
-        }) }
+        return () => {
+            fetch(`http://localhost:3000/events/`).then(response => response.json()).then(data => {
+                data.events.map((e) => {
+                    if (e.status === 'Ongoing') {
+                        setOngoingEvents([...ongoingEvents, e._id])
+                    }
+                })
+            })
+
+        }
     }, [])
 
     return (
