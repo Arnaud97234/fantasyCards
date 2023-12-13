@@ -1,20 +1,72 @@
 import styles from "../styles/Game.module.css";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ResumeEvent from "./ResumeEvent";
+import {
+  addPendingEventsToStore,
+  addFutureEventsToStore,
+} from "../reducers/events";
 
 function Game() {
-  const [pendingEvent, setPendingEvent] = useState([]);
-  const [futureEvent, setFutureEvent] = useState([]);
+  const dispatch = useDispatch();
+  const myEvent = useSelector((state) => state.users.value.eventsList);
+  const pendingEvent = useSelector((state) => state.events.value.pendingEvent);
+  const futureEvent = useSelector((state) => state.events.value.futureEvent);
+  console.log(myEvent);
+  
 
   useEffect(() => {
     fetch("http://localhost:3000/events")
       .then((response) => response.json())
       .then((data) => {
-        setPendingEvent(data.events.map((data, i)=> {
-            return <ResumeEvent key={i} title={data.title} startDate={data.startDate} endDate={data.endDate} status={data.status}/>
-        }))
+        dispatch(
+          addPendingEventsToStore(
+            data.events.filter((data, i) => data.status !== "close")
+          )
+        );
+        dispatch(
+          addFutureEventsToStore(
+            data.events.filter((data, i) => data.status !== "in progress")
+          )
+        );
       });
   }, []);
+
+// const infoMyEvent = myEvent.map((data, i)=> {
+//     return (
+//         <ResumeEvent
+//           key={i}
+//           title={data.title}
+//           startDate={data.startDate}
+//           endDate={data.endDate}
+//           status={data.status}
+//         />
+//       );
+// })
+
+  const infoPendingEvent = pendingEvent.map((data, i) => {
+    return (
+      <ResumeEvent
+        key={i}
+        title={data.title}
+        startDate={data.startDate}
+        endDate={data.endDate}
+        status={data.status}
+      />
+    );
+  });
+
+  const infoFutureEvent = futureEvent.map((data, i) => {
+    return (
+      <ResumeEvent
+        key={i}
+        title={data.title}
+        startDate={data.startDate}
+        endDate={data.endDate}
+        status={data.status}
+      />
+    );
+  });
 
   return (
     <main className={styles.container}>
@@ -30,9 +82,7 @@ function Game() {
         <div className={styles.eventContainer}>
           <div className={styles.textContainer}>
             <h3 className={styles.littleTitle}>My events</h3>
-            <p>event 1</p>
-            <p>event 2</p>
-            <p>event 3</p>
+            {/* {infoMyEvent} */}
           </div>
           <div className={styles.buttumContainer}>
             <button className={styles.buttum}>View more</button>
@@ -41,7 +91,7 @@ function Game() {
         <div className={styles.eventContainer}>
           <div className={styles.textContainer}>
             <h3 className={styles.littleTitle}>Pending events</h3>
-            {pendingEvent}
+            {infoPendingEvent}
           </div>
           <div className={styles.buttumContainer}>
             <button className={styles.buttum}>View more</button>
@@ -50,9 +100,7 @@ function Game() {
         <div className={styles.eventContainer}>
           <div className={styles.textContainer}>
             <h3 className={styles.littleTitle}>Future events</h3>
-            <p>event 1</p>
-            <p>event 2</p>
-            <p>event 3</p>
+            {infoFutureEvent}
           </div>
           <div className={styles.buttumContainer}>
             <button className={styles.buttum}>View more</button>

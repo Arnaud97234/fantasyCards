@@ -30,11 +30,12 @@ router.post("/signup", (req, res) => {
         password: hash,
         token: token,
         credits: 3000,
-        cardsId: ["657725893a2c37b476ed7951", "657725893a2c37b476ed7967"],
-      });
-      newUser.save().then((newDoc) => {
-        res.json({ result: true, token: newDoc.token });
-      });
+        eventsId: ['65784e2953f4d5ab88d57892', '65785d8253f4d5ab88d57895'],
+        cardsId: ['657725893a2c37b476ed7951','657725893a2c37b476ed7967']
+      })
+      newUser.save().then(newDoc => {
+        res.json({ result: true, token: newDoc.token })
+      })
     } else {
       // User already in db
       res.json({ result: false, error: "User exists already" });

@@ -11,11 +11,11 @@ export const eventsSlice = createSlice({
         addMyEventsToStore: (state, action) => {
             state.value.myEvents.push(action.payload)
         },
-        addPendingEventsToStore: (state) => {
-            state.value.pendingEvent.push(action.payload)
+        addPendingEventsToStore: (state, action) => {
+            state.value.pendingEvent = (action.payload)
         },
-        addFutureEventsToStore: (state) => {
-            state.value.futureEvent.push(action.payload)
+        addFutureEventsToStore: (state, action) => {
+            state.value.futureEvent = (action.payload)
         },
     }
 })
