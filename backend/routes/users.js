@@ -3,7 +3,6 @@ var router = express.Router();
 
 require("../models/connection");
 const User = require("../models/users");
-const Card = require("../models/cards");
 const { checkBody } = require("../modules/checkBody");
 const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
@@ -82,12 +81,5 @@ router.get("/user/:token", (req, res) => {
   });
 });
 
-router.get("/myCards/:token", (req, res) => {
-  User.findOne({ token: req.params.token })
-    .populate("cardsId")
-    .then((data) => {
-      res.json({ result: true, cards: data.cardsId });
-    });
-});
 
 module.exports = router;
