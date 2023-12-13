@@ -36,9 +36,11 @@ function Header() {
       return (
         <div className={styles.navItems}>
           <button onClick={() => {
-              router.push("/game");
-            }} className={styles.item}>Game</button>
-          <button className={styles.item}>Market</button>
+            router.push("/game");
+          }} className={styles.item}>Game</button>
+          <button onClick={() => {
+            router.push("/market");
+          }} className={styles.item} >Market</button>
           <button
             className={styles.item}
             onClick={() => {
@@ -96,21 +98,21 @@ function Header() {
           }}
         />
         {navItems()}
-        </main>
-        <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
-          <SignupModal />
-        </Modal>
-        <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
-         <SigninModal />
-        </Modal>
-      </div>
-    );
-  }
+      </main>
+      <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
+        <SignupModal />
+      </Modal>
+      <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
+        <SigninModal />
+      </Modal>
+    </div>
+  );
+}
 
-  const CustomCloseIcon = () => {
-    return (
-      <Button className={styles.closeModalButton}>X</Button>
-    );
-  };
-  
-  export default Header;
+const CustomCloseIcon = () => {
+  return (
+    <Button className={styles.closeModalButton}>X</Button>
+  );
+};
+
+export default Header;
