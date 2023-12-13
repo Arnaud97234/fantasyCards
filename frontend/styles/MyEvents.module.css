@@ -1,0 +1,27 @@
+.container {
+  background-color: #36393b;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.title {
+  margin: 0;
+  font-family: "Bangers";
+  font-weight: lighter;
+  text-decoration: underline;
+  font-size: 3em;
+  color: #f2aa4c;
+}
+.allEventContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 600px;
+  width: 95%;
+  overflow-y: scroll;
+}
+

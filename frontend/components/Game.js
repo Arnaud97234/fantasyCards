@@ -7,6 +7,7 @@ import {
   addPendingEventsToStore,
   addFutureEventsToStore,
 } from "../reducers/events";
+import { useRouter } from "next/router";
 
 function Game() {
   const router = useRouter();
@@ -14,8 +15,6 @@ function Game() {
   const myEvent = useSelector((state) => state.users.value.eventsList);
   const pendingEvent = useSelector((state) => state.events.value.pendingEvent);
   const futureEvent = useSelector((state) => state.events.value.futureEvent);
-  console.log(myEvent);
-
 
   useEffect(() => {
     fetch("http://localhost:3000/events")
@@ -33,6 +32,18 @@ function Game() {
         );
       });
   }, []);
+
+const infoMyEvent = myEvent.map((data, i)=> {
+    return (
+        <ResumeEvent
+          key={i}
+          title={data.title}
+          startDate={data.startDate}
+          endDate={data.endDate}
+          status={data.status}
+        />
+      );
+})
 
   const infoPendingEvent = pendingEvent.map((data, i) => {
     return (
@@ -58,6 +69,10 @@ function Game() {
     );
   });
 
+  const goMyEvents = ()=> {
+    router.push("/myEvents");
+  }
+
   return (
     <main className={styles.container}>
       <h2 className={styles.title}>Events</h2>
@@ -72,10 +87,10 @@ function Game() {
         <div className={styles.eventContainer}>
           <div className={styles.textContainer}>
             <h3 className={styles.littleTitle}>My events</h3>
-            {/* {infoMyEvent} */}
+            {infoMyEvent}
           </div>
-          <div className={styles.buttonContainer}>
-            <button className={styles.button}>View more</button>
+          <div className={styles.buttumContainer}>
+            <button onClick={() => goMyEvents()} className={styles.buttum}>View more</button>
           </div>
         </div>
         <div className={styles.eventContainer}>

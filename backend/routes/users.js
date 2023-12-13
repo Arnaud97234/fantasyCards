@@ -49,7 +49,7 @@ router.post("/signin", (req, res) => {
     return;
   }
   // Check if user is registred
-  User.findOne({ email: req.body.email }).populate('cardsId packsId').exec().then((data) => {
+  User.findOne({ email: req.body.email }).populate('cardsId packsId eventsId').exec().then((data) => {
     if (!data) {
       res.json({ result: false, error: "No account found" });
       return;
@@ -73,6 +73,7 @@ router.post("/signin", (req, res) => {
 
 router.get("/user/:token", (req, res) => {
   User.findOne({ token: req.params.token }).then((data) => {
+    
     res.json({
       result: true,
       username: data.username,
