@@ -1,0 +1,96 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: auto;
+    background-color: #36393B;
+    color: #F2AA4C;
+  }
+
+
+.marketContainer {
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  
+}
+
+.content {
+  display: flex;
+  flex-direction:column;
+  background-color: rgb(254, 254, 254);
+  width: 100%;
+  /* border: #010101 solid 1px; */
+  height: auto;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.boxTitle1 {
+  font-family: 'Bangers';
+  font-weight: normal;
+  text-align: center;
+  color: #F2AA4C;
+}
+
+.boxTitle2 {
+  font-family: 'Bangers';
+  font-weight: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.cardButtonContainer {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
+  width: 175px;
+}
+
+
+.cardButton {
+  background-color: #F2AA4C;
+  border-radius: 4px;
+  font-family: "Bangers";
+  color : #000000;
+  height: 30px;
+  width: 50px;
+}
+
+.divider {
+  /* display: flex; */
+    width: 70%;
+    height: 1px;
+    background-color: rgb(233, 190, 89);
+    margin: 15px 0px 15px 0px;
+  padding-right: 70%;
+}
+  
+
+  /* .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    padding: 60px 80px;
+    margin: 0 40px;
+    border: #F2AA4C solid 1px;
+    min-width: 750px;
+  }
+  
+  .boxDesc {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 20px;
+    font-family: 'Calistoga';
+  }
+  
+  .boxTitle {
+    font-family: 'Bangers';
+    font-weight: normal;
+    text-decoration: underline;
+  } */
