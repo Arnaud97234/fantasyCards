@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 
 function Home() {
@@ -7,19 +7,33 @@ function Home() {
     const [credits, setCredits] = useState(0)
     const [cards, setCards] = useState([])
     const [events, setEvents] = useState([])
+    const [ongoingEvents, setOngoingEvents] = useState([])
 
     const userToken = useSelector((state) => state.users.value.token)
-    const dispatch = useDispatch()
-
 
     useEffect(() => {
-        return () => { fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
-            setUsername(data.username)
-            setCredits(data.credits)
-            setCards(data.cards)
-            setEvents(data.events)
-        }) }
-       }, [])
+        return () => {
+            fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
+                setUsername(data.username)
+                setCredits(data.credits)
+                setCards(data.cards)
+                setEvents(data.events)
+            })
+        }
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            fetch(`http://localhost:3000/events/`).then(response => response.json()).then(data => {
+                data.events.map((e) => {
+                    if (e.status === 'Ongoing') {
+                        setOngoingEvents([...ongoingEvents, e._id])
+                    }
+                })
+            })
+
+        }
+    }, [])
 
     return (
         <div>
@@ -38,7 +52,7 @@ function Home() {
                         <div className={styles.box} id={styles.gameBox}>
                             <h3 className={styles.contentTitle}>Games</h3>
                             <div className={styles.content}>
-                                <span className={styles.contentItem}>Ongoing events</span>
+                                <span className={styles.contentItem}>Ongoing events: {ongoingEvents.length}</span>
                                 <span className={styles.contentItem}>My events: {events.length}</span>
                             </div>
                             <button className={styles.contentButton}>View more</button>
