@@ -64,6 +64,7 @@ router.post("/signin", (req, res) => {
       token: data.token,
       username: data.username,
       cardsList: data.cardsId,
+      eventsList: data.eventsId
     });
   });
 });
@@ -75,6 +76,7 @@ router.get("/user/:token", (req, res) => {
       username: data.username,
       credits: data.credits,
       cards: data.cardsId,
+      events: data.eventsId
     });
   });
 });
