@@ -35,7 +35,9 @@ function Header() {
     if (isConnected) {
       return (
         <div className={styles.navItems}>
-          <button className={styles.item}>Game</button>
+          <button onClick={() => {
+              router.push("/game");
+            }} className={styles.item}>Game</button>
           <button className={styles.item}>Market</button>
           <button
             className={styles.item}
