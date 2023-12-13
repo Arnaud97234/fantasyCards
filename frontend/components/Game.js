@@ -13,7 +13,7 @@ function Game() {
   const pendingEvent = useSelector((state) => state.events.value.pendingEvent);
   const futureEvent = useSelector((state) => state.events.value.futureEvent);
   console.log(myEvent);
-  
+
 
   useEffect(() => {
     fetch("http://localhost:3000/events")
@@ -32,17 +32,17 @@ function Game() {
       });
   }, []);
 
-// const infoMyEvent = myEvent.map((data, i)=> {
-//     return (
-//         <ResumeEvent
-//           key={i}
-//           title={data.title}
-//           startDate={data.startDate}
-//           endDate={data.endDate}
-//           status={data.status}
-//         />
-//       );
-// })
+  // const infoMyEvent = myEvent.map((data, i)=> {
+  //     return (
+  //         <ResumeEvent
+  //           key={i}
+  //           title={data.title}
+  //           startDate={data.startDate}
+  //           endDate={data.endDate}
+  //           status={data.status}
+  //         />
+  //       );
+  // })
 
   const infoPendingEvent = pendingEvent.map((data, i) => {
     return (
