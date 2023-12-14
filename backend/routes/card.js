@@ -6,8 +6,8 @@ const Team = require("../models/teams");
 
 require("../models/connection");
 
-router.get("/myCards/:idCard", (req, res) => {
-    Card.findOne({ _id: req.params.idCard })
+router.get("/myCards/:cardsId", (req, res) => {
+    Card.findOne({ _id: req.params.cardsId })
       .then((card) => {
         console.log(card.teamId)
         Team.findOne({id : card.teamId})

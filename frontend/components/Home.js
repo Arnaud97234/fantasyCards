@@ -6,6 +6,7 @@ function Home() {
     const [username, setUsername] = useState('')
     const [credits, setCredits] = useState(0)
     const [cards, setCards] = useState([])
+    const [packs, setPacks] = useState([])
     const [events, setEvents] = useState([])
     const [ongoingEvents, setOngoingEvents] = useState([])
 
@@ -14,10 +15,12 @@ function Home() {
     useEffect(() => {
         return () => {
             fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
+                console.log(data)
                 setUsername(data.username)
                 setCredits(data.credits)
                 setCards(data.cards)
                 setEvents(data.events)
+                setPacks(data.packs)
             })
         }
     }, [])
@@ -62,7 +65,7 @@ function Home() {
                         <h3 className={styles.contentTitle}>Inventory</h3>
                         <div className={styles.content}>
                             <span className={styles.contentItem}>Total cards: {cards.length}</span>
-                            <span className={styles.contentItem}>Total packs</span>
+                            <span className={styles.contentItem}>Total packs: {packs.length}</span>
                         </div>
                         <button className={styles.contentButton}>View more</button>
                     </div>

@@ -30,7 +30,8 @@ router.post("/signup", (req, res) => {
         token: token,
         credits: 3000,
         eventsId: ['65784e2953f4d5ab88d57892', '65785d8253f4d5ab88d57895'],
-        cardsId: ['657725893a2c37b476ed7951','657725893a2c37b476ed7967']
+        cardsId: ['657725893a2c37b476ed7951','657725893a2c37b476ed7967'],
+        packsId: ['657ac7703cdefa35afbfe608'],
       })
       newUser.save().then(newDoc => {
         res.json({ result: true, token: newDoc.token })
@@ -48,7 +49,7 @@ router.post("/signin", (req, res) => {
     return;
   }
   // Check if user is registred
-  User.findOne({ email: req.body.email }).then((data) => {
+  User.findOne({ email: req.body.email }).populate('cardsId packsId').exec().then((data) => {
     if (!data) {
       res.json({ result: false, error: "No account found" });
       return;
@@ -58,13 +59,14 @@ router.post("/signin", (req, res) => {
       res.json({ result: false, error: "Wrong password" });
       return;
     }
-
+    console.log('voila',data.packsId)
     res.json({
       result: true,
       token: data.token,
       username: data.username,
       cardsList: data.cardsId,
-      eventsList: data.eventsId
+      eventsList: data.eventsId,
+      packsList: data.packsId
     });
   });
 });
@@ -76,7 +78,8 @@ router.get("/user/:token", (req, res) => {
       username: data.username,
       credits: data.credits,
       cards: data.cardsId,
-      events: data.eventsId
+      events: data.eventsId,
+      packs: data.packsId
     });
   });
 });

@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
     token: String,
     credits: Number,
     eventsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'events'}],
-    cardsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'cards'}]
+    cardsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'cards'}],
+    packsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'packs'}],
 })
 
 const User = mongoose.model('users', userSchema)

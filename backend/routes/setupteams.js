@@ -6,7 +6,9 @@ require("dotenv").config();
 require('../models/connection')
 const Team = require('../models/teams')
 const Card = require('../models/cards')
-const Game = require('../models/games')
+const Game = require('../models/games');
+const Pack = require('../models/packs')
+const { route } = require("./users");
 
 const apiHost = process.env.RAPIDAPI_HOST;
 const apiKey = process.env.RAPIDAPI_KEY;
@@ -99,5 +101,17 @@ router.get('/setGames', function(req, res) {
   })
 })
 
+router.post('/pack', (req, res) => {
+  const newPack = new Pack({
+   rarity:2,
+   stock: 34,
+   packPrices: [
+    {userId:'65772715a7dd15c4a7dfca7c', price:0},
+    {userId:'65772715a7dd15c4a7dfca7c', price:0}
+  ]
+  })
+  newPack.save()
+  res.json({ result: true });
+ });
 
 module.exports = router;

@@ -1,0 +1,36 @@
+.container {
+  background-color: #36393b;
+  height: 74vh;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  font-family: "Bangers";
+  font-weight: normal;
+  text-decoration: underline;
+  color: #f2aa4c;
+  padding-top: 2%;
+}
+
+.main{
+    background-color: #36393b;
+}
+
+.content {
+  width: 90%;
+  background-color: white;
+  margin: 2% 0;
+  font-family: "Calistoga";
+  height: 85%;
+}
+
+.tabList {
+  background-color: #36393b;
+  width: 200%;
+}
+
+.cardContainer, .packContainer {
+  display: flex;
+}
