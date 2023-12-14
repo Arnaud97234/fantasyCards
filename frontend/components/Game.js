@@ -2,12 +2,14 @@ import styles from "../styles/Game.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ResumeEvent from "./ResumeEvent";
+import { useRouter } from "next/router";
 import {
   addPendingEventsToStore,
   addFutureEventsToStore,
 } from "../reducers/events";
 
 function Game() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const myEvent = useSelector((state) => state.users.value.eventsList);
   const pendingEvent = useSelector((state) => state.events.value.pendingEvent);
@@ -31,18 +33,6 @@ function Game() {
         );
       });
   }, []);
-
-  // const infoMyEvent = myEvent.map((data, i)=> {
-  //     return (
-  //         <ResumeEvent
-  //           key={i}
-  //           title={data.title}
-  //           startDate={data.startDate}
-  //           endDate={data.endDate}
-  //           status={data.status}
-  //         />
-  //       );
-  // })
 
   const infoPendingEvent = pendingEvent.map((data, i) => {
     return (
@@ -84,8 +74,8 @@ function Game() {
             <h3 className={styles.littleTitle}>My events</h3>
             {/* {infoMyEvent} */}
           </div>
-          <div className={styles.buttumContainer}>
-            <button className={styles.buttum}>View more</button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button}>View more</button>
           </div>
         </div>
         <div className={styles.eventContainer}>
@@ -93,8 +83,8 @@ function Game() {
             <h3 className={styles.littleTitle}>Pending events</h3>
             {infoPendingEvent}
           </div>
-          <div className={styles.buttumContainer}>
-            <button className={styles.buttum}>View more</button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button}>View more</button>
           </div>
         </div>
         <div className={styles.eventContainer}>
@@ -102,8 +92,10 @@ function Game() {
             <h3 className={styles.littleTitle}>Future events</h3>
             {infoFutureEvent}
           </div>
-          <div className={styles.buttumContainer}>
-            <button className={styles.buttum}>View more</button>
+          <div className={styles.buttonContainer}>
+            <button onClick={() => {
+              router.push("/futureEvents");
+            }} className={styles.button}>View more</button>
           </div>
         </div>
       </div>

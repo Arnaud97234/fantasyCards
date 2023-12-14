@@ -1,14 +1,20 @@
 import styles from "../styles/FutureEvents.module.css"
 import FutureEvent from "./FutureEvent"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 
 function futureEvents() {
 
-    const eventsList = useSelector((state) => state.events.value.futureEvent)
-    console.log(eventsList)
+    const userToken = useSelector((state) => state.users.value.token)
+    // const stringifiedEventsList = JSON.stringify(eventsList[0].gamesId)
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/games/teamsByGame/${userToken}`)
+            .then(response => response.json())
+            .then(data => console.log(data))
+    }, [])
+
     let events = eventsList.map((e, i) => {
-        console.log(e.status)
         if (e.status === 'Not Started') {
             return <FutureEvent title={e.title} key={i} />
         }
