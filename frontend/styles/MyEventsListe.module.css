@@ -1,5 +1,9 @@
 .eventContainer {
-    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  text-align: center;
   background-color: #36393b;
   height: 500px;
   width: 90%;
@@ -11,73 +15,77 @@
   font-size: 1.3em;
 }
 .containerGameList {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-    height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  height: 100px;
+  width: 100%;
+}
+.GameList {
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
-.containerGameList > p{
-    margin: 0px;
-    font-family: "Calistoga";
+.containerGameList > p {
+  margin: 0px;
+  font-family: "Calistoga";
 }
-.containerGameList > h4{
-    font-family: "Bangers";
-    margin: 0px;
+.containerGameList > h4 {
+  font-family: "Bangers";
+  margin: 0px;
 }
 .containerCardEngaged {
-    text-align: center;
-    background-color: white;
-    height: 250px;
-    width: 100%;
+  text-align: center;
+  background-color: white;
+  height: 250px;
+  width: 100%;
 }
 .containerCardEngaged > h4 {
-    font-family: "Bangers";
-    margin: 0px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+  font-family: "Bangers";
+  margin: 0px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 .allCardGame {
-    display: flex;
-    justify-content: space-around;
-    width: 900px;
+  display: flex;
+  justify-content: space-around;
+  width: 900px;
 }
 .cardGame {
-    font-weight: lighter;
-    text-align: center;
-    color: white;
-    background-color: #36393b;
-    height: 200px;
-    width: 30%;
+  font-weight: lighter;
+  text-align: center;
+  color: white;
+  background-color: #36393b;
+  height: 200px;
+  width: 30%;
 }
 .result {
-    background-color: white;
-    height: 400px;
-    width: 350px;
-    color:black
-}
-.result {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    color:black;
-    font-family: "Bangers";
-    text-align: center;
+    margin-bottom: 30px;
+  background-color: white;
+  height: 350px;
+  width: 350px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  font-family: "Bangers";
+  text-align: center;
 }
 .allContainer {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .buttum {
-    margin-bottom: 20px;
-    height: 50px;
-    width: 150px;
-    border-radius: 10px;
-    background-color: #f2aa4c;
-    color: black;
-    font-family: "Bangers";
-    cursor: pointer;
+  margin-bottom: 20px;
+  height: 50px;
+  width: 150px;
+  border-radius: 10px;
+  background-color: #f2aa4c;
+  color: black;
+  font-family: "Bangers";
+  cursor: pointer;
 }

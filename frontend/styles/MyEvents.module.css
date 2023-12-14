@@ -1,6 +1,6 @@
 .container {
   background-color: #36393b;
-  min-height: 88vh;
+  min-height: 90.7vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,7 +17,7 @@
 .allEventContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   background-color: white;
   height: 600px;
