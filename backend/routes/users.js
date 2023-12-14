@@ -85,5 +85,4 @@ router.get("/user/:token", (req, res) => {
   });
 });
 
-
 module.exports = router;
