@@ -7,7 +7,7 @@ const packPriceSchema = mongoose.Schema({
 
 const packSchema = mongoose.Schema({
     rarity: Number,
-    supply: Number,
+    stock: Number,
     packPrices: [packPriceSchema]
 })
 
