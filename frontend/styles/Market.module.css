@@ -1,5 +1,6 @@
 .main {
     display: flex;
+    justify-content: left;
     flex-direction: column;
     min-height: 100vh;
     width: auto;
@@ -11,20 +12,32 @@
 .marketContainer {
   display: flex;
   flex-direction:column;
-  width: 100%;
-  
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.content {
+/* .content {
   display: flex;
   flex-direction:column;
   background-color: rgb(254, 254, 254);
   width: 100%;
-  /* border: #010101 solid 1px; */
   height: auto;
   padding-bottom: 10px;
   padding-left: 10px;
+} */
+
+
+.content {
+	display: flex;
+  background-color: rgb(254, 254, 254);
+	overflow: auto;
+	width: auto; 
+	margin-right: 10px;
+	border: 1px solid #ddd;
+	padding: 50px;
+	box-sizing: border-box;
 }
+
 
 .boxTitle1 {
   font-family: 'Bangers';

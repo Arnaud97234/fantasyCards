@@ -1,4 +1,20 @@
-.card {
+
+
+.card1 {
+	display: flex;
+	flex-direction: column; 
+	justify-content: center;
+	width: 170px;
+	height: 190px;
+	background-color: #badbe4;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	margin: 20px;
+}
+
+
+.card2 {
 	display: flex;
 	flex-direction: column; 
 	justify-content: center;
@@ -8,7 +24,11 @@
 	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
+	padding-left: 20px;
+	padding-right: 20px;
 }
+
+
 
 .card img {
 	display: flex;
