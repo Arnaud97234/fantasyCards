@@ -7,15 +7,15 @@ const Team = require("../models/teams");
 require("../models/connection");
 
 router.get("/myCards/:cardsId", (req, res) => {
-    Card.findOne({ _id: req.params.cardsId })
-      .then((card) => {
-        console.log(card.teamId)
-        Team.findOne({id : card.teamId})
+  Card.findOne({ _id: req.params.cardsId })
+    .then((card) => {
+      console.log(card.teamId)
+      Team.findOne({ id: card.teamId })
         .then((team) => {
-            console.log(team)
-            res.json({ result: true, team: team, card:card })
+          console.log(team)
+          res.json({ result: true, team: team, card: card })
         });
-      });
-  });
+    });
+});
 
 module.exports = router;

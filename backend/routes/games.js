@@ -7,21 +7,19 @@ const Team = require("../models/teams")
 const User = require("../models/users")
 const Event = require("../models/events")
 
-router.get("/teamsByGame/:userToken", (req, res) => {
+router.get("/gameByEvent/:userToken", (req, res) => {
     User.findOne({ 'token': req.params.userToken })
         .populate("eventsId").populate({ path: "eventsId", populate: { path: "gamesId" } }).lean().then(data => {
-            data.eventsId.map((e) => {
-                e.gamesId.map((e) => {
-                    Team.findOne({ "id": e.teamHomeId })
-                        .then(home => {
-                            Team.findOne({ "id": e.teamAwayId })
-                                .then(teams => res.json({ teamHome: home, teamAway: teams }))
-                        })
-                    //    Team.findOne({ "id": e.teamAwayId }).then(away => console.log("away: ", away))
-                })
-            }
-            )
 
+            res.json({ result: 1, events: data })
+        })
+})
+
+router.get("/teamsByGame/:teamHome/:teamAway", (req, res) => {
+    Team.find({ "id": req.params.teamHome })
+        .then(home => {
+            Team.find({ "id": req.params.teamAway })
+            .then(away => res.json({ teamHome: home, teamAway: away }))
         })
 })
 
