@@ -43,40 +43,17 @@ router.get("/", (req, res) => {
   });
 });
 
-// router.get("/infoMyEvents/:token", (req, res) => {
-//   User.findOne({ token: req.params.token })
-//     .populate("eventsId cardsId")
-//     .exec()
-//     .then((userInfo) => {
-//       Event.find({ _id: userInfo.eventsId })
-//         .populate("gameId")
-//         .lean()
-//         .then((eventsInfo) => {
-//           console.log(eventsInfo);
-//           const game = eventsInfo.map((data, i)=> {
-//             return data.gameId
-//           })
-//           console.log(game); 
-//           const team = game.map((data, i)=> {
-//             return {game: i+1, teamHomeId: data.teamHomeId, teamAwayId: data.teamAwayId}
-//           })
-//           console.log(team);
-
-
-//           Team.find({
-//             $or: [{id: team[i].teamHomeId}, {id: team[i].teamAwayId}]
-//           })
-//           .then((teamInfo)=> {
-//             console.log(teamInfo);
-//           })
-//           res.json({
-//             result: true,
-//             userInfo,
-//             eventsInfo,
-//             teamInfo,
-//           });
-//         });
-//     });
-// });
+router.get("/infoMyEvents/:token", (req, res) => {
+  User.findOne({ token: req.params.token })
+    .populate({path:"eventsId", populate: {path: "gameId", model: "games"}})
+    .populate("cardsId")
+    .exec()
+    .then((userInfo) => {
+      res.json({
+        result: true,
+        userInfo,
+      });
+    });
+});
 
 module.exports = router;

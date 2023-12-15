@@ -15,7 +15,6 @@ function Home() {
     useEffect(() => {
         return () => {
             fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
-                console.log(data)
                 setUsername(data.username)
                 setCredits(data.credits)
                 setCards(data.cards)

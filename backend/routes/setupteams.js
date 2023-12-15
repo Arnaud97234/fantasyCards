@@ -106,8 +106,8 @@ router.post('/pack', (req, res) => {
    rarity:2,
    stock: 34,
    packPrices: [
-    {userId:'65772715a7dd15c4a7dfca7c', price:0},
-    {userId:'65772715a7dd15c4a7dfca7c', price:0}
+    {userId:'657b3189a14a854ad9f410c3', price:0},
+    {userId:'657b3189a14a854ad9f410c3', price:0}
   ]
   })
   newPack.save()
