@@ -18,18 +18,17 @@ function DbEvent(props) {
         />
       );
     });
-    console.log(infoGame);
 
-    return (
-      <div>
+  return (
+    <div>
       <p>_id:{props.eventId}</p>
       <p>title:{props.title}</p>
       <p>startDate:{props.eventStartDate}</p>
       <p>endDate:{props.eventEndDate}</p>
       <p>status:{props.status}</p>
       <p>gameId:{infoGame}</p>
-      </div>
-    );
-  }
-  
-  export default DbEvent;
+    </div>
+  );
+}
+
+export default DbEvent;

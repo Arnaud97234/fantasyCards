@@ -30,7 +30,7 @@ router.post("/signup", (req, res) => {
         token: token,
         credits: 3000,
         eventsId: ['65784e2953f4d5ab88d57892', '65785d8253f4d5ab88d57895'],
-        cardsId: ['6576ef1b5780ec49805f6029','6576ef1b5780ec49805f6028'],
+        cardsId: ['6576ef1b5780ec49805f6029', '6576ef1b5780ec49805f6028'],
         packsId: ['657b3479aff53222d010cf89'],
       })
       newUser.save().then(newDoc => {
@@ -59,7 +59,6 @@ router.post("/signin", (req, res) => {
       res.json({ result: false, error: "Wrong password" });
       return;
     }
-    console.log('voila',data.packsId)
     res.json({
       result: true,
       token: data.token,
@@ -73,7 +72,6 @@ router.post("/signin", (req, res) => {
 
 router.get("/user/:token", (req, res) => {
   User.findOne({ token: req.params.token }).then((data) => {
-    
     res.json({
       result: true,
       username: data.username,

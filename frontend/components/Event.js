@@ -1,7 +1,36 @@
 import styles from "../styles/FutureEvents.module.css"
+import { useEffect } from "react"
+import DbGame from "./DbGame"
 
+
+function Event(props) {
+
+
+    const games = props.gamesId.map((e, i) => {
+        return (
+            <DbGame
+                teamHome={e.teamHomeId}
+                teamAway={e.teamAwayId}
+                startDate={e.startDate}
+                endDate={e.endDate}
+                status={e.status}
+                winnerTeamHome={e.winnerTeamHome}
+                winnerTeamAway={e.winnerTeamAway}
+            />)
+    })
+    console.log("games: ", games)
+    return (
+        <>
+            <FutureEvent title={props.title} gameStatus={games[0].props.status} />
+            {games}
+        </>
+    )
+}
 
 const MyEvent = (props) => {
+
+
+
     return (
         <div className={styles.event} id={styles.myEvent}>
             <h2 className={styles.title}>{props.title}</h2>
@@ -9,7 +38,7 @@ const MyEvent = (props) => {
                 <div className={styles.gamesContent}>
                     <h3 className={styles.subtitle}>Game List</h3>
                     <div className={styles.gameList}>
-                        {props.home} - {props.away}
+
                     </div>
                 </div>
                 <div className={styles.cardsContent}>
@@ -43,12 +72,12 @@ const MyEvent = (props) => {
 const FutureEvent = (props) => {
     return (
         <div className={styles.event} id={styles.futureEvent}>
-            <h2 className={styles.title}>{props.title}</h2>
+            <h2 className={styles.title}> {props.title}</h2>
             <div className={styles.gameContent}>
                 <div className={styles.gamesList}>
                     <h3 className={styles.subtitle}>Game List</h3>
                     <div className={styles.gameList}>
-                        {props.home} - {props.away}
+
                     </div>
                 </div>
                 <div className={styles.cardsContent}>
@@ -73,7 +102,7 @@ const pendingEvents = (props) => {
                     <div className={styles.gameListContent}>
                         <span className={styles.subtitle}>Game List</span>
                         <div className={styles.gameList}>
-                            {props.home} - {props.away}
+
                         </div>
                     </div>
                     <div className={styles.cardContent}>
@@ -101,15 +130,6 @@ const pendingEvents = (props) => {
                 </div>
             </div>
         </div>
-    )
-}
-
-function Event(props) {
-
-    return (
-        <>
-            <FutureEvent />
-        </>
     )
 }
 

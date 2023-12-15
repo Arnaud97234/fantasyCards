@@ -33,17 +33,17 @@ function Game() {
       });
   }, []);
 
-const infoMyEvent = myEvent.map((data, i)=> {
+  const infoMyEvent = myEvent.map((data, i) => {
     return (
-        <ResumeEvent
-          key={i}
-          title={data.title}
-          startDate={data.startDate}
-          endDate={data.endDate}
-          status={data.status}
-        />
-      );
-})
+      <ResumeEvent
+        key={i}
+        title={data.title}
+        startDate={data.startDate}
+        endDate={data.endDate}
+        status={data.status}
+      />
+    );
+  })
 
   const infoPendingEvent = pendingEvent.map((data, i) => {
     return (
@@ -69,7 +69,7 @@ const infoMyEvent = myEvent.map((data, i)=> {
     );
   });
 
-  const goMyEvents = ()=> {
+  const goMyEvents = () => {
     router.push("/myEvents");
   }
 

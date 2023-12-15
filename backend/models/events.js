@@ -5,8 +5,8 @@ const eventSchema = mongoose.Schema({
     startDate: Date,
     endDate: Date,
     status: String,
-    gameId: [{type: mongoose.Schema.Types.ObjectId, ref: 'games'}],
-    usersId: [{type: mongoose.Schema.Types.ObjectId, ref: 'users'}]
+    gamesId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'games' }],
+    usersId: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
 
 })
 

@@ -5,19 +5,34 @@ import { useSelector } from "react-redux"
 
 function futureEvents() {
 
+
+    const [events, setEvents] = useState(null)
+
     const userToken = useSelector((state) => state.users.value.token)
 
     useEffect(() => {
+        if (userToken == '') {
+            return
+        }
         fetch(`http://localhost:3000/games/gameByEvent/${userToken}`)
             .then(response => response.json())
             .then(events => {
-                events.events.eventsId.map((event) => {
-                    console.log(event)
-                })
+                setEvents(events)
             })
     }, [])
 
-
+    const eventsToDisplay = events && events.events.eventsId.map((e, i) => {
+        return (
+            <Event
+                id={e._id}
+                eventstart={e.startDate}
+                eventEnd={e.enDate}
+                status={e.status}
+                title={e.title}
+                gamesId={e.gamesId}
+            />
+        )
+    })
 
     return (
         <div>
@@ -27,7 +42,7 @@ function futureEvents() {
                     <span className={styles.text}>Events not started yet</span>
                 </div>
                 <div className={styles.eventsList}>
-                    <Event />
+                    {eventsToDisplay}
 
                 </div>
             </main>
