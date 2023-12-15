@@ -9,8 +9,7 @@
 .title {
   margin: 0;
   font-family: "Bangers";
-  font-weight: normal;
-  text-decoration: underline;
+  font-weight: lighter;
   font-size: 3em;
   color: #f2aa4c;
 }
@@ -50,11 +49,11 @@
   color: #f2aa4c;
   font-size: 1.7em;
 }
-.buttumContainer {
+.buttonContainer {
   display: flex;
   justify-content: flex-end;
 }
-.buttum {
+.button {
   height: 50px;
   width: 150px;
   border-radius: 10px;
@@ -62,5 +61,8 @@
   margin-right: 20px;
   margin-bottom: 20px;
   font-family: "Bangers";
-  font-size: 1.5em;
+  font-size: 1.2em;
+  font-weight: lighter;
+  border: none;
+  cursor: pointer;
 }

@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var teamsRouter = require('./routes/setupteams')
 var cardRouter = require('./routes/card');
 var eventRouter = require('./routes/events')
+var gameRouter = require('./routes/games')
 
 var app = express();
 app.use(cors())
@@ -24,5 +25,6 @@ app.use('/users', usersRouter);
 app.use('/setup', teamsRouter)
 app.use('/card', cardRouter)
 app.use('/events', eventRouter)
+app.use('/games', gameRouter)
 
 module.exports = app;

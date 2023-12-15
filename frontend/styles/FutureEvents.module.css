@@ -1,0 +1,71 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #36393B;
+    font-family: 'Calistoga';
+}
+
+.title {
+    color: #F2AA4C;
+    font-family: 'Bangers';
+    font-weight: lighter;
+}
+
+.textContainer {
+    font-weight: lighter;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    padding: 60px;
+}
+
+.eventContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    margin: 20px;
+    background-color: #36393B;
+}
+
+.eventTitle {
+    color: #F2AA4C;
+    font-family: 'Bangers';
+    font-weight: lighter;
+}
+
+.cardsListName {
+    font-weight: lighter;
+    margin-left: 20px;
+}
+
+.gamesListName {
+    font-weight: lighter;
+}
+
+.eventsList {
+    background-color: white;
+    margin: 40px;
+    width: 100%;
+}
+
+.eventContent {
+    border:#F2AA4C solid 1px;
+    width: 70%;
+    margin-bottom: 40px;
+    font-family: 'Bangers';
+    color: #F2AA4C;
+    display: flex;
+    flex-direction: column;
+}
+
+.gamesList {
+    align-self: center;
+
+}
