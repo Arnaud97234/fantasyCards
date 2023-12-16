@@ -32,17 +32,17 @@ function Game() {
       });
   }, []);
 
-// const infoMyEvent = myEvent.map((data, i)=> {
-//     return (
-//         <ResumeEvent
-//           key={i}
-//           title={data.title}
-//           startDate={data.startDate}
-//           endDate={data.endDate}
-//           status={data.status}
-//         />
-//       );
-// })
+const infoMyEvent = myEvent.map((data, i)=> {
+    return (
+        <ResumeEvent
+          key={i}
+          title={data.title}
+          startDate={data.startDate}
+          endDate={data.endDate}
+          status={data.status}
+        />
+      );
+})
 
   const infoPendingEvent = pendingEvent.map((data, i) => {
     return (
@@ -82,7 +82,7 @@ function Game() {
         <div className={styles.eventContainer}>
           <div className={styles.textContainer}>
             <h3 className={styles.littleTitle}>My events</h3>
-            {/* {infoMyEvent} */}
+            {infoMyEvent}
           </div>
           <div className={styles.buttumContainer}>
             <button className={styles.buttum}>View more</button>
