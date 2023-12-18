@@ -30,8 +30,8 @@ function CardInventory({ rarity }) {
         <img className={styles.img} src="./images/logo.png" />
       </div>
       <div className={styles.alignBtn}>
-        <button className={styles.btn}>desc</button>
-        <button className={styles.btn}>buy</button>
+        <button disabled className={styles.btn}>desc</button>
+        <button disabled className={styles.btn}>buy</button>
       </div>
     </div>
   );

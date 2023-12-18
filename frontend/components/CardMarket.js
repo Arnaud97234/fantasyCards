@@ -30,8 +30,6 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
     ModalVisibleSellCard()
   }
 
-  console.log('aid',id)
-
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
@@ -39,8 +37,8 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
           <p>{playerName}</p>
       </div>
       <div className={styles.alignBtn}>
-        <button className={styles.btn} onClick={handleModalVisible}>Desc</button>
-        <button className={styles.btn} onClick={handleModalVisible}>Buy</button>
+        <button disabled className={styles.btn} onClick={handleModalVisible}>Desc</button>
+        <button disabled className={styles.btn} onClick={handleModalVisible}>Buy</button>
       </div>
     </div>
   );

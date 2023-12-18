@@ -30,8 +30,6 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
     ModalVisibleSellCard()
   }
 
-  console.log('aid',id)
-
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
