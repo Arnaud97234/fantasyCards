@@ -59,7 +59,6 @@ router.post("/signin", (req, res) => {
       res.json({ result: false, error: "Wrong password" });
       return;
     }
-    console.log('voila',data.packsId)
     res.json({
       result: true,
       token: data.token,
