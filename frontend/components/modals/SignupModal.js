@@ -29,7 +29,7 @@ function SignupModal() {
           setSignupUsername('')
           setSignupEmail('')
           setSignupPassword('')
-          addUser({token: data.token, email: signupEmail, username: signupUsername })
+          addUser({token: data.token, email: signupEmail, username: signupUsername, cardsList: data.cardsList, gamesList: data.gamesList, packsList: data.packsList })
           router.push("/home");
         } else {
             setErrorMessage(data.error)

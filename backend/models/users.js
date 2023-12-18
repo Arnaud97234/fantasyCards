@@ -7,7 +7,6 @@ const userSchema = mongoose.Schema({
     stock: Number,
     token: String,
     credits: Number,
-    eventsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'events'}],
     cardsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'cards'}],
     packsId: [{type: mongoose.Schema.Types.ObjectId, ref: 'packs'}],
 })

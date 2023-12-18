@@ -29,9 +29,9 @@ router.post("/signup", (req, res) => {
         password: hash,
         token: token,
         credits: 3000,
-        eventsId: ['65784e2953f4d5ab88d57892', '65785d8253f4d5ab88d57895'],
-        cardsId: ['657725893a2c37b476ed7951','657725893a2c37b476ed7967'],
-        packsId: ['657ac7703cdefa35afbfe608'],
+        gamesId:['6576fd7ad9e95bbd54710ad2'],
+        cardsId: ['657725893a2c37b476ed7950','657725893a2c37b476ed7953'],
+        packsId: ['657ad5ea8f96e935b9b105a4'],
       })
       newUser.save().then(newDoc => {
         res.json({ result: true, token: newDoc.token })
@@ -63,8 +63,8 @@ router.post("/signin", (req, res) => {
       result: true,
       token: data.token,
       username: data.username,
+      gamesList: data.gamesId,
       cardsList: data.cardsId,
-      eventsList: data.eventsId,
       packsList: data.packsId
     });
   });
@@ -76,8 +76,8 @@ router.get("/user/:token", (req, res) => {
       result: true,
       username: data.username,
       credits: data.credits,
+      games: data.gamesId,
       cards: data.cardsId,
-      events: data.eventsId,
       packs: data.packsId
     });
   });

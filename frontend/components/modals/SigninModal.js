@@ -27,7 +27,7 @@ function SigninModal() {
             if(data.result) {
                 setSigninEmail('')
                 setSigninPassword('')
-                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList, eventsList: data.eventsList, packsList: data.packsList })
+                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList, gamesList: data.gamesList, packsList: data.packsList })
                 router.push("/home");
             } else {
                 setErrorMessage(data.error)

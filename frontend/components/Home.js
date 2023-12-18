@@ -7,8 +7,6 @@ function Home() {
     const [credits, setCredits] = useState(0)
     const [cards, setCards] = useState([])
     const [packs, setPacks] = useState([])
-    const [events, setEvents] = useState([])
-    const [ongoingEvents, setOngoingEvents] = useState([])
 
     const userToken = useSelector((state) => state.users.value.token)
 
@@ -19,24 +17,11 @@ function Home() {
                 setUsername(data.username)
                 setCredits(data.credits)
                 setCards(data.cards)
-                setEvents(data.events)
                 setPacks(data.packs)
             })
         }
     }, [])
 
-    useEffect(() => {
-        return () => {
-            fetch(`http://localhost:3000/events/`).then(response => response.json()).then(data => {
-                data.events.map((e) => {
-                    if (e.status === 'Ongoing') {
-                        setOngoingEvents([...ongoingEvents, e._id])
-                    }
-                })
-            })
-
-        }
-    }, [])
 
     return (
         <div>
@@ -55,8 +40,8 @@ function Home() {
                         <div className={styles.box} id={styles.gameBox}>
                             <h3 className={styles.contentTitle}>Games</h3>
                             <div className={styles.content}>
-                                <span className={styles.contentItem}>Ongoing events: {ongoingEvents.length}</span>
-                                <span className={styles.contentItem}>My events: {events.length}</span>
+                                <span className={styles.contentItem}>Game1: </span>
+                                <span className={styles.contentItem}>Game2: </span>
                             </div>
                             <button className={styles.contentButton}>View more</button>
                         </div>
