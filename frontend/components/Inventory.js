@@ -10,7 +10,7 @@ import { useState } from "react";
 import CardInventory from "./CardInventory";
 import PackInventory from "./PackInventory";
 import { Modal, Button } from "antd";
-import SellCardModal from "./modals/SellCardModal.js";
+import SellCardModal from "./modals/SellCardModal.js"; 
 import SigninModal from "./modals/SigninModal.js";
 
 export default function Inventory() {
