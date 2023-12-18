@@ -1,4 +1,4 @@
-import styles from "../styles/CardInventory.module.css";
+import styles from "../styles/CardMarket.module.css";
 function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, id }) {
 
   let style = {};
@@ -37,13 +37,10 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
       <div className={styles.cardContainer} style={style}>
           <img src={playerImage} />
           <p>{playerName}</p>
-          {/* <div className={styles.infosClub}>
-            <img src={clubImage} />
-            <p>{clubName}</p>
-          </div> */}
       </div>
-      <div>
-        <button className={styles.btn} onClick={handleModalVisible}>SELL</button>
+      <div className={styles.alignBtn}>
+        <button className={styles.btn} onClick={handleModalVisible}>Desc</button>
+        <button className={styles.btn} onClick={handleModalVisible}>Buy</button>
       </div>
     </div>
   );

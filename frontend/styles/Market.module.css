@@ -20,10 +20,13 @@
   flex-direction:column;
   background-color: rgb(254, 254, 254);
   width: 100%;
-  /* border: #010101 solid 1px; */
   height: auto;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+
+.cards{
+  display: flex;
 }
 
 .boxTitle1 {
@@ -58,12 +61,17 @@
 }
 
 .divider {
-  /* display: flex; */
     width: 70%;
     height: 1px;
     background-color: rgb(233, 190, 89);
     margin: 15px 0px 15px 0px;
   padding-right: 70%;
+}
+
+.packs{
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
   
 
