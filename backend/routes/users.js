@@ -28,14 +28,21 @@ router.post("/signup", (req, res) => {
         email: req.body.email,
         password: hash,
         token: token,
-        credits: 3000,
-        gamesId:['6576fd7ad9e95bbd54710ad2'],
-        cardsId: ['657725893a2c37b476ed7950','657725893a2c37b476ed7953'],
-        packsId: ['657ad5ea8f96e935b9b105a4'],
-      })
-      newUser.save().then(newDoc => {
-        res.json({ result: true, token: newDoc.token })
-      })
+        credits: Math.floor(Math.random()*89999+10000),
+        gamesId: ["6576fd7ad9e95bbd54710ad2"],
+        cardsId: ["657725893a2c37b476ed7950", "657725893a2c37b476ed7953"],
+        packsId: ["657ad5ea8f96e935b9b105a4"],
+      });
+      newUser.save().then((newDoc) => {
+        res.json({
+          result: true,
+          token: newDoc.token,
+          username: newDoc.username,
+          gamesList: newDoc.gamesId,
+          cardsList: newDoc.cardsId,
+          packsList: newDoc.packsId,
+        });
+      });
     } else {
       // User already in db
       res.json({ result: false, error: "User exists already" });
@@ -49,25 +56,28 @@ router.post("/signin", (req, res) => {
     return;
   }
   // Check if user is registred
-  User.findOne({ email: req.body.email }).populate('cardsId packsId').exec().then((data) => {
-    if (!data) {
-      res.json({ result: false, error: "No account found" });
-      return;
-    }
-    // Verify password
-    if (!bcrypt.compareSync(req.body.password, data.password)) {
-      res.json({ result: false, error: "Wrong password" });
-      return;
-    }
-    res.json({
-      result: true,
-      token: data.token,
-      username: data.username,
-      gamesList: data.gamesId,
-      cardsList: data.cardsId,
-      packsList: data.packsId
+  User.findOne({ email: req.body.email })
+    .populate("cardsId packsId")
+    .exec()
+    .then((data) => {
+      if (!data) {
+        res.json({ result: false, error: "No account found" });
+        return;
+      }
+      // Verify password
+      if (!bcrypt.compareSync(req.body.password, data.password)) {
+        res.json({ result: false, error: "Wrong password" });
+        return;
+      }
+      res.json({
+        result: true,
+        token: data.token,
+        username: data.username,
+        gamesList: data.gamesId,
+        cardsList: data.cardsId,
+        packsList: data.packsId,
+      });
     });
-  });
 });
 
 router.get("/user/:token", (req, res) => {
@@ -78,10 +88,9 @@ router.get("/user/:token", (req, res) => {
       credits: data.credits,
       games: data.gamesId,
       cards: data.cardsId,
-      packs: data.packsId
+      packs: data.packsId,
     });
   });
 });
-
 
 module.exports = router;
