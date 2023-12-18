@@ -45,9 +45,6 @@ export default function Inventory() {
     user.cardPrices.find(data => data.userToken === token))
    ;
 
-   console.log('i', id)
-
-  console.log('idInv',userCards[0]._id)
   const cardPlayer = userCards.map((data, i) => {
     const id = userCards.map(user => 
       user.cardPrices.find(ids => ids.userToken === token))
