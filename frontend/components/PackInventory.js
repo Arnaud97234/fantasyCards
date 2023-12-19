@@ -1,5 +1,5 @@
 import styles from "../styles/PackInventory.module.css";
-function CardInventory({ rarity }) {
+function CardInventory({ rarity, id }) {
   let style = {};
   switch (rarity) {
     case 6:
@@ -24,13 +24,18 @@ function CardInventory({ rarity }) {
     default:
       break;
   }
+
+  const handleOpenPack = () => {
+    console.log('Pack Id: ', id)
+  }
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id={id}>
       <div className={styles.packContainer} style={style}>
         <img className={styles.img} src="./images/logo.png" />
       </div>
       <div className={styles.btnContainer}>
-        <button className={styles.btn}>OPEN</button>
+        <button className={styles.btn} onClick={handleOpenPack()}>OPEN</button>
         <button className={styles.btn}>SELL</button>
       </div>
     </div>

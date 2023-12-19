@@ -10,13 +10,13 @@ import { useState } from "react";
 import CardInventory from "./CardInventory";
 import PackInventory from "./PackInventory";
 import { Modal, Button } from "antd";
-import SellCardModal from "./modals/SellCardModal.js"; 
+import SellCardModal from "./modals/SellCardModal.js";
 import SigninModal from "./modals/SigninModal.js";
 
 export default function Inventory() {
   const userCards = useSelector((state) => state.users.value.cardsList);
   const userPacks = useSelector((state) => state.users.value.packsList);
-  const token = useSelector((state)=> state.users.value.token)
+  const token = useSelector((state) => state.users.value.token)
   const [sellCardVisible, setSellCardVisible] = useState(false);
   const [sellPackVisible, setPackCardVisible] = useState(false);
   const [value, setValue] = useState("1");
@@ -40,37 +40,41 @@ export default function Inventory() {
   const handleCancelModalSellPack = () => {
     setPackCardVisible(false);
   };
-  
-  const id = userCards.map(user => 
+
+  const id = userCards.map(user =>
     user.cardPrices.find(data => data.userToken === token))
-   ;
+    ;
 
   const cardPlayer = userCards.map((data, i) => {
-    const id = userCards.map(user => 
+    const id = userCards.map(user =>
       user.cardPrices.find(ids => ids.userToken === token))
-      console.log(id);
-     ;
-      return (
-        <CardInventory
-          key={i}
-          id={id}
-          playerName={data.name}
-          playerImage={data.picture}
-          rarity={data.rarity}
-          ModalVisibleSellCard={ModalVisibleSellCard}
-        />
-      );
+    console.log(id);
+    ;
+    return (
+      <CardInventory
+        key={i}
+        id={id}
+        playerName={data.name}
+        playerImage={data.picture}
+        rarity={data.rarity}
+        ModalVisibleSellCard={ModalVisibleSellCard}
+      />
+    );
   })
 
   const packPlayer = userPacks.map((data, i) => {
+    console.log("packPlayer: ", data)
     return (
       <PackInventory
         key={i}
+        id={data._id}
         rarity={data.rarity}
         ModalVisibleSellPack={ModalVisibleSellPack}
       />
     );
   });
+
+
 
   return (
     <div>

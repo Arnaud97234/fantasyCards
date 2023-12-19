@@ -26,18 +26,16 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
       break;
   }
 
-  const handleModalVisible = ()=>{
+  const handleModalVisible = () => {
     ModalVisibleSellCard()
   }
-
-  console.log('aid',id)
 
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
-          <img src={playerImage} />
-          <p>{playerName}</p>
-          {/* <div className={styles.infosClub}>
+        <img src={playerImage} />
+        <p>{playerName}</p>
+        {/* <div className={styles.infosClub}>
             <img src={clubImage} />
             <p>{clubName}</p>
           </div> */}
