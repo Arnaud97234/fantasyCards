@@ -13,7 +13,7 @@ import PackInventory from "./PackInventory";
 export default function Inventory() {
   const userCards = useSelector((state) => state.users.value.cardsList);
   const userPacks = useSelector((state) => state.users.value.packsList);
-  const token = useSelector((state)=> state.users.value.token)
+  const token = useSelector((state) => state.users.value.token)
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -37,7 +37,7 @@ export default function Inventory() {
       } = card;
 
       for (const data of cardPrices) {
-        if(data.userToken === token){
+        if (data.userToken === token) {
           const dataCard = {
             cardId: _id,
             teamId,
@@ -72,35 +72,35 @@ export default function Inventory() {
       );
     });
 
-    const tabPacks = [];
+  const tabPacks = [];
 
-    const packsList =
-      userPacks &&
-      userPacks.map((pack) => {
-        const {
-          _id,
-          rarity,
-          stock,
-          packPrices,
-        } = pack;
-  
-        for (const data of packPrices) {
-          if(data.userToken === token){
-            const dataPack = {
-              packId: _id,
-              rarity,
-              stock,
-              packPrice: data ? data.price : null,
-              subDocId: data._id,
-              userToken: data
-                ? data.userToken
-                : null,
-              // Ajoutez d'autres champs si nécessaire
-            };
-            tabPacks.push(dataPack)
-          }
+  const packsList =
+    userPacks &&
+    userPacks.map((pack) => {
+      const {
+        _id,
+        rarity,
+        stock,
+        packPrices,
+      } = pack;
+
+      for (const data of packPrices) {
+        if (data.userToken === token) {
+          const dataPack = {
+            packId: _id,
+            rarity,
+            stock,
+            packPrice: data ? data.price : null,
+            subDocId: data._id,
+            userToken: data
+              ? data.userToken
+              : null,
+            // Ajoutez d'autres champs si nécessaire
+          };
+          tabPacks.push(dataPack)
         }
-      });
+      }
+    });
 
   const packPlayer = tabPacks.map((data, i) => {
     return (

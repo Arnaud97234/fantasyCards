@@ -1,6 +1,6 @@
 import styles from "../styles/PackInventory.module.css";
 import { Modal, Button } from "antd";
-import SellPackModal from "./modals/SellPackModal.js"; 
+import SellPackModal from "./modals/SellPackModal.js";
 import { useState } from "react";
 function PackInventory({ rarity, id }) {
 
@@ -39,12 +39,12 @@ function PackInventory({ rarity, id }) {
       break;
   }
 
-  const handleModalVisible = ()=>{
+  const handleModalVisible = () => {
     ModalVisibleSellPack()
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id={id}>
       <div className={styles.packContainer} style={style}>
         <img className={styles.img} src="./images/logo.png" />
       </div>
@@ -60,7 +60,7 @@ function PackInventory({ rarity, id }) {
         visible={sellPackVisible}
         footer={null}
       >
-        <SellPackModal id={id}/>
+        <SellPackModal id={id} />
       </Modal>
     </div>
   );

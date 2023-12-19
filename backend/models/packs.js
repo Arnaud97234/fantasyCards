@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const packPriceSchema = mongoose.Schema({
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
-    price: Number
+    userToken: { type: mongoose.Schema.Types.String, ref: 'users' },
+    price: Number,
 })
 
 const packSchema = mongoose.Schema({
