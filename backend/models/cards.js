@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const cardPriceSchema = mongoose.Schema({
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'users'},
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
     price: Number
 })
 
@@ -11,7 +11,7 @@ const cardSchema = mongoose.Schema({
     rarity: Number,
     stock: Number,
     picture: String,
-    eventsId: {type: mongoose.Schema.Types.ObjectId, ref: 'events'},
+    eventsId: { type: mongoose.Schema.Types.ObjectId, ref: 'events' },
     cardPrices: [cardPriceSchema]
 })
 
