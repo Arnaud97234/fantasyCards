@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const Card = require("../models/cards");
+const User = require("../models/users");
 const Team = require("../models/teams");
 const User = require("../models/users");
 
@@ -25,6 +26,32 @@ router.patch("/sell/:token/:subDocId", async (req, res) => {
   sub.price = req.body.price;
   await card.save();
   res.json(sub);
+});
+
+router.get("/addCardInGame/:userToken", (req, res) => {
+  User.findOne({ token: req.params.userToken })
+    .populate("cardsId")
+    .then((data) => {
+      console.log(data);
+      res.json({ cards: data.cardsId });
+    });
+});
+
+router.get("/:th/:ta/:token", async (req, res) => {
+    const teamHome = await Team.findOne({ id: req.params.th });
+    const teamAway = await Team.findOne({ id: req.params.ta });
+
+    const cardTa = await Card.find({
+      teamId: teamHome.id,
+      "cardPrices.userToken": req.params.token
+    });
+
+    const cardTh = await Card.find({
+      teamId: teamAway.id,
+      "cardPrices.userToken": req.params.token
+    });
+
+    res.json({ result: true, teamHome, teamAway, cardTa, cardTh });
 });
 
 

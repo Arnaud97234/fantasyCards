@@ -1,12 +1,12 @@
 .container {
+  height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
-  min-height: 94.5vh;
-  background-color: #36393b;
+  overflow-y: scroll;
 }
-.title {
+/* .title {
   margin: 0;
   font-family: "Bangers";
   font-weight: normal;
@@ -63,4 +63,4 @@
   margin-bottom: 20px;
   font-family: "Bangers";
   font-size: 1.5em;
-}
+} */
