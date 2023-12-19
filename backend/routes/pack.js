@@ -12,12 +12,16 @@ router.get("/marketPacks", (req, res) => {
       });
   });
 
-// router.patch('/sell/:token/:subDocId', async (req, res) => {
-//       const card = await Card.findOne({ 'cardPrices.userToken': req.params.token, 'cardPrices._id': req.params.subDocId });
-//       const sub = card.cardPrices.find(sd => sd._id.toString() === req.params.subDocId);
-//       sub.price = req.body.price;
-//       await card.save();
-//       res.json(sub);
-// });
-
+  router.patch("/sell/:token/:subDocId", async (req, res) => {
+    const pack = await Pack.findOne({
+      "packPrices.userToken": req.params.token,
+      "packPrices._id": req.params.subDocId,
+    });
+    const sub = pack.packPrices.find(
+      (sd) => sd._id.toString() === req.params.subDocId
+    );
+    sub.price = req.body.price;
+    await pack.save();
+    res.json(sub);
+  });
 module.exports = router;

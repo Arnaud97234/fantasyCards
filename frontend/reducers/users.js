@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    value: { token: null, username: null, email: null, cardsList: [], packsList: [], cardIdSell: null }
+    value: { token: null, username: null, email: null, cardsList: [], packsList: []}
 }
 
 export const usersSlice = createSlice({
@@ -21,9 +21,6 @@ export const usersSlice = createSlice({
             state.value.email = null
             state.value.cardsList = []
             state.value.packsList = []
-        },
-        setCardIdSell: (state, action) => {
-            state.value.cardIdSell = action.payload.cardIdSell;
         }
     }
 })

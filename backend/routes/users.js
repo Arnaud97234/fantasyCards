@@ -29,8 +29,8 @@ router.post("/signup", (req, res) => {
         password: hash,
         token: token,
         credits: Math.floor(Math.random()*89999+10000),
-        gamesId: ["6576fd7ad9e95bbd54710ad2"],
-        cardsId: ["657725893a2c37b476ed7950", "657725893a2c37b476ed7953"],
+        gamesId: [],
+        cardsId: [],
         packsId: ["657ad5ea8f96e935b9b105a4"],
       });
       newUser.save().then((newDoc) => {

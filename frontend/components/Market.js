@@ -15,10 +15,49 @@ function Market() {
       });
   }, []);
 
-  const cards =
+  const tabCards = [];
+
+  const carsList =
     marketCards &&
-    marketCards.map((data, i) => {
-      console.log(data);
+    marketCards.map((card) => {
+      const {
+        _id,
+        teamId,
+        name,
+        rarity,
+        stock,
+        picture,
+        eventsId,
+        cardPrices,
+      } = card;
+
+
+      for (const data of cardPrices) {
+        if(data.price > 0){
+          const dataCard = {
+            cardId: _id,
+            teamId,
+            name,
+            rarity,
+            stock,
+            picture,
+            eventsId,
+            cardPrice: data ? data.price : null,
+            subDocId:data._id,
+            userToken: data
+              ? data.userToken
+              : null,
+            // Ajoutez d'autres champs si nécessaire
+          };
+          tabCards.push(dataCard)
+        }
+      }
+    });
+
+  const cards =
+    tabCards &&
+    tabCards.map((data, i) => {
+      console.log("a", data);
       return (
         <CardMarket
           key={i}
@@ -37,9 +76,39 @@ function Market() {
       });
   }, []);
 
-  const packs =
+  const tabPacks = [];
+
+  const packsList =
     marketPacks &&
-    marketPacks.map((data, i) => {
+    marketPacks.map((pack) => {
+      const {
+        _id,
+        rarity,
+        stock,
+        packPrices,
+      } = pack;
+
+      for (const data of packPrices) {
+        if(data.price > 0){
+          const dataPack = {
+            packId: _id,
+            rarity,
+            stock,
+            packPrice: data ? data.price : null,
+            subDocId: data._id,
+            userToken: data
+              ? data.userToken
+              : null,
+            // Ajoutez d'autres champs si nécessaire
+          };
+          tabPacks.push(dataPack)
+        }
+      }
+    });
+
+  const packs =
+    tabPacks &&
+    tabPacks.map((data, i) => {
       console.log(data);
       return <PackMarket key={i} rarity={data.rarity} />;
     });
@@ -52,10 +121,8 @@ function Market() {
           <h3 className={styles.boxTitle2}>Buy Cards</h3>
           <div className={styles.cards}>{cards}</div>
         </div>
-
-        
         <div className={styles.content}>
-        <div className={styles.divider}></div>
+          <div className={styles.divider}></div>
           <h3 className={styles.boxTitle2}>Buy Packs</h3>
           <div className={styles.packs}>{packs}</div>
         </div>
