@@ -9,65 +9,105 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import CardInventory from "./CardInventory";
 import PackInventory from "./PackInventory";
-import { Modal, Button } from "antd";
-import SellCardModal from "./modals/SellCardModal.js"; 
-import SigninModal from "./modals/SigninModal.js";
 
 export default function Inventory() {
   const userCards = useSelector((state) => state.users.value.cardsList);
   const userPacks = useSelector((state) => state.users.value.packsList);
   const token = useSelector((state)=> state.users.value.token)
-  const [sellCardVisible, setSellCardVisible] = useState(false);
-  const [sellPackVisible, setPackCardVisible] = useState(false);
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const ModalVisibleSellCard = () => {
-    setSellCardVisible(true);
-  };
+  const tabCards = [];
 
-  const ModalVisibleSellPack = () => {
-    setPackCardVisible(true);
-  };
+  const cardsList =
+    userCards &&
+    userCards.map((card) => {
+      const {
+        _id,
+        teamId,
+        name,
+        rarity,
+        stock,
+        picture,
+        eventsId,
+        cardPrices,
+      } = card;
 
-  const handleCancelModalSellCard = () => {
-    setSellCardVisible(false);
-  };
+      for (const data of cardPrices) {
+        if(data.userToken === token){
+          const dataCard = {
+            cardId: _id,
+            teamId,
+            name,
+            rarity,
+            stock,
+            picture,
+            eventsId,
+            cardPrice: data ? data.price : null,
+            subDocId: data._id,
+            userToken: data
+              ? data.userToken
+              : null,
+            // Ajoutez d'autres champs si nécessaire
+          };
+          tabCards.push(dataCard)
+        }
+      }
+    });
 
-  const handleCancelModalSellPack = () => {
-    setPackCardVisible(false);
-  };
-  
-  const id = userCards.map(user => 
-    user.cardPrices.find(data => data.userToken === token))
-   ;
-
-  const cardPlayer = userCards && userCards.map((data, i) => {
-    const id = userCards.map(user =>
-      user.cardPrices.find(ids => ids.userToken === token))
-      console.log(id);
-     ;
+  const cards =
+    tabCards &&
+    tabCards.map((data, i) => {
       return (
         <CardInventory
           key={i}
-          id={id}
+          id={data.subDocId}
           playerName={data.name}
           playerImage={data.picture}
           rarity={data.rarity}
-          ModalVisibleSellCard={ModalVisibleSellCard}
         />
       );
-  })
+    });
 
-  const packPlayer = userPacks.map((data, i) => {
+    const tabPacks = [];
+
+    const packsList =
+      userPacks &&
+      userPacks.map((pack) => {
+        const {
+          _id,
+          rarity,
+          stock,
+          packPrices,
+        } = pack;
+  
+        for (const data of packPrices) {
+          if(data.userToken === token){
+            const dataPack = {
+              packId: _id,
+              rarity,
+              stock,
+              packPrice: data ? data.price : null,
+              subDocId: data._id,
+              userToken: data
+                ? data.userToken
+                : null,
+              // Ajoutez d'autres champs si nécessaire
+            };
+            tabPacks.push(dataPack)
+          }
+        }
+      });
+
+  const packPlayer = tabPacks.map((data, i) => {
     return (
       <PackInventory
         key={i}
+        id={data.subDocId}
         rarity={data.rarity}
-        ModalVisibleSellPack={ModalVisibleSellPack}
       />
     );
   });
@@ -95,7 +135,7 @@ export default function Inventory() {
                   className={styles.cardContainer}
                   value="1"
                 >
-                  {cardPlayer}
+                  {cards}
                 </TabPanel>
                 <TabPanel
                   style={{
@@ -113,30 +153,6 @@ export default function Inventory() {
           </div>
         </div>
       </div>
-      <Modal
-        closeIcon={<CustomCloseIcon />}
-        width={300}
-        centered={true}
-        onCancel={() => handleCancelModalSellCard()}
-        visible={sellCardVisible}
-        footer={null}
-      >
-        <SellCardModal />
-      </Modal>
-      <Modal
-        closeIcon={<CustomCloseIcon />}
-        width={300}
-        centered={true}
-        onCancel={() => handleCancelModalSellPack()}
-        visible={sellPackVisible}
-        footer={null}
-      >
-        <SigninModal />
-      </Modal>
     </div>
   );
 }
-
-const CustomCloseIcon = () => {
-  return <Button className={styles.closeModalButton}>X</Button>;
-};

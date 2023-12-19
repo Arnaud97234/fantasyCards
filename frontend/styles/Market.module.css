@@ -27,6 +27,7 @@
 
 .cards{
   display: flex;
+  overflow: auto;
 }
 
 .boxTitle1 {

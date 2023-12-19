@@ -33,7 +33,7 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
-          <img src={playerImage} />
+          <img src={playerImage} width={148} height={150}/>
           <p>{playerName}</p>
       </div>
       <div className={styles.alignBtn}>

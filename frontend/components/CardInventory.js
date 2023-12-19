@@ -1,5 +1,18 @@
 import styles from "../styles/CardInventory.module.css";
-function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, id }) {
+import { Modal, Button } from "antd";
+import SellCardModal from "./modals/SellCardModal.js"; 
+import { useState } from "react";
+function CardInventory({ playerName, playerImage, rarity, id }) {
+
+  const [sellCardVisible, setSellCardVisible] = useState(false);
+
+  const ModalVisibleSellCard = () => {
+    setSellCardVisible(true);
+  };
+
+  const handleCancelModalSellCard = () => {
+    setSellCardVisible(false);
+  };
 
   let style = {};
   switch (rarity) {
@@ -35,16 +48,26 @@ function CardInventory({ playerName, playerImage, rarity, ModalVisibleSellCard, 
       <div className={styles.cardContainer} style={style}>
           <img src={playerImage} />
           <p>{playerName}</p>
-          {/* <div className={styles.infosClub}>
-            <img src={clubImage} />
-            <p>{clubName}</p>
-          </div> */}
       </div>
       <div>
         <button className={styles.btn} onClick={handleModalVisible}>SELL</button>
       </div>
+      <Modal
+        closeIcon={<CustomCloseIcon />}
+        width={300}
+        centered={true}
+        onCancel={() => handleCancelModalSellCard()}
+        visible={sellCardVisible}
+        footer={null}
+      >
+        <SellCardModal id={id}/>
+      </Modal>
     </div>
   );
 }
+
+const CustomCloseIcon = () => {
+  return <Button className={styles.closeModalButton}>X</Button>;
+};
 
 export default CardInventory;
