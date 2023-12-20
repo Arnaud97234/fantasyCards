@@ -11,24 +11,49 @@ router.get("/marketPacks", (req, res) => {
   Pack.find({ 'packPrices.price': { $gt: 0 } })
     .then((pack) => {
       res.json({ result: true, pack: pack })
-    });
-});
+    })
+})
 
 router.patch("/openPack/:userToken/:userPack", async (req, res) => {
   // find the pack to open
-  const user = await User.findOne({ "token": req.params.userToken })
-  //const userId = await user._id
-  const pack = await Pack.findOne({ "_id": req.params.userPack, "packPrices.userToken": req.params.userToken })
-  // Decrease pack Stock
-  const packToUpdate = pack.packPrices[0]._id
-  const newStock = Number(pack.stock) - 1
-  await Pack.updateOne({ "packPrices.userToken": req.params.userToken }, { "stock": newStock })
+  const pack = await Pack.findOne({ "_id": req.params.userPack })
 
+  // Decrease pack's Stock
+  const newStock = Number(pack.stock) - 1
+  await Pack.updateOne({ "_id": req.params.userPack }, { "stock": newStock })
+  const packsEligible = []
+  pack.packPrices.map((e) => {
+    if (e.userToken == req.params.userToken) {
+      packsEligible.push(e)
+    }
+  })
+
+  const packToremove = packsEligible[0]._id
   // Remove user from Pack
   await Pack.updateOne(
     { "_id": req.params.userPack },
-    { $pull: { "packPrices": { "_id": packToUpdate } } }
+    { $pull: { "packPrices": { "_id": packToremove } } }
   )
+
+  // Decrease pack quantity for user
+
+  const packQtyToDecrease = await User.findOne({ "token": req.params.userToken })
+
+  packQtyToDecrease.packsId.map((e) => {
+    if (e.packId == req.params.userPack) {
+      User.updateOne({
+        "packsId": {
+          "packId": req.params.userPack
+        }
+      }, {
+        "packsId": {
+          "quantity": packsEligible.length
+        }
+      })
+    }
+  })
+
+  // Give 5 random cards to user
   const cardsToAdd = await Card.aggregate([
     { $sample: { size: 5 } }
   ])
