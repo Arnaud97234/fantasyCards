@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const packPriceSchema = mongoose.Schema({
-    userToken: { type: mongoose.Schema.Types.String, ref: 'users' },
+    userToken: String,
     price: Number
 })
 

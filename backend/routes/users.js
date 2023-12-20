@@ -28,7 +28,7 @@ router.post("/signup", (req, res) => {
         email: req.body.email,
         password: hash,
         token: token,
-        credits: Math.floor(Math.random()*89999+10000),
+        credits: Math.floor(Math.random() * 89999 + 10000),
         gamesId: [],
         cardsId: [],
         packsId: ["657ad5ea8f96e935b9b105a4"],
@@ -69,6 +69,7 @@ router.post("/signin", (req, res) => {
         res.json({ result: false, error: "Wrong password" });
         return;
       }
+      console.log(data.packsList)
       res.json({
         result: true,
         token: data.token,

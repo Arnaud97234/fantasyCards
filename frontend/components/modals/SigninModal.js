@@ -22,17 +22,17 @@ function SigninModal() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: signinEmail, password: signinPassword }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if(data.result) {
-                setSigninEmail('')
-                setSigninPassword('')
-                addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList, gamesList: data.gamesList, packsList: data.packsList })
-                router.push("/home");
-            } else {
-                setErrorMessage(data.error)
-            }
-        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result) {
+                    setSigninEmail('')
+                    setSigninPassword('')
+                    addUser({ token: data.token, email: signinEmail, username: data.username, cardsList: data.cardsList, gamesList: data.gamesList, packsList: data.packsList })
+                    router.push("/home");
+                } else {
+                    setErrorMessage(data.error)
+                }
+            })
     }
     const state = useSelector((state) => state.users.value)
     return (
