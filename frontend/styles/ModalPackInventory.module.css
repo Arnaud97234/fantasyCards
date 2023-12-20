@@ -1,0 +1,20 @@
+.main {
+  min-height:400px;
+  width: 90%;
+  background: white;
+}
+
+.flexbox {
+  padding: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.modalTitle {
+  padding-top: 5%;
+  text-align: center;
+  font-family: "Bangers";
+  color: black;
+  font-weight: normal;
+}
+

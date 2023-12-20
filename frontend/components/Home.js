@@ -40,8 +40,8 @@ function Home() {
                         <div className={styles.box} id={styles.gameBox}>
                             <h3 className={styles.contentTitle}>Games</h3>
                             <div className={styles.content}>
-                                <span className={styles.contentItem}>Game1: </span>
-                                <span className={styles.contentItem}>Game2: </span>
+                                <span className={styles.contentItem1}>Game1: </span>
+                                <span className={styles.contentItem1}>Game2: </span>
                             </div>
                             <button className={styles.contentButton}>View more</button>
                         </div>
@@ -54,7 +54,9 @@ function Home() {
                         </div>
                         <button className={styles.contentButton}>View more</button>
                     </div>
+                    <div className={styles.divider}></div>
                 </div>
+                
             </main>
         </div>
     )
