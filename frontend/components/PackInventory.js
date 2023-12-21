@@ -3,7 +3,7 @@ import { Modal, Button } from "antd";
 import SellPackModal from "./modals/SellPackModal.js";
 import OpenPackModal from "./modals/OpenPackModal.js";
 import { useState } from "react";
-function PackInventory({ rarity, id }) {
+function PackInventory({ rarity, id, packId }) {
 
   const [sellPackVisible, setSellPackVisible] = useState(false);
   const [openPackVisible, setOpenPackVisible] = useState(false);
@@ -75,7 +75,7 @@ function PackInventory({ rarity, id }) {
         visible={sellPackVisible}
         footer={null}
       >
-        <SellPackModal id={id} />
+        <SellPackModal id={id} packId={packId} />
       </Modal>
       <Modal
         closeIcon={<CustomCloseIcon />}

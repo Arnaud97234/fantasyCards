@@ -1,9 +1,13 @@
 import styles from '../../styles/Header.module.css'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { removeCardToStore } from '../../reducers/users'
 
 
-function SellCardModal({id}) {
+function SellCardModal({id, idCard}) {
+
+    const dispatch = useDispatch()
     const [price, setPrice] = useState('')
     const token = useSelector((state)=> state.users.value.token)
 
@@ -15,6 +19,7 @@ function SellCardModal({id}) {
         })
         .then(response => response.json())
         .then(data => {
+                
         })
     }
     return (

@@ -63,6 +63,7 @@ export default function Inventory() {
       return (
         <CardInventory
           key={i}
+          idCard={data.cardId}
           id={data.subDocId}
           playerName={data.name}
           playerImage={data.picture}
@@ -95,7 +96,7 @@ export default function Inventory() {
     });
 
   const packPlayer = tabPacks.map((data, i) => {
-    return <PackInventory key={i} id={data.subDocId} rarity={data.rarity} />;
+    return <PackInventory key={i} id={data.subDocId} packId={data.packId} rarity={data.rarity} />;
   });
 
   return (

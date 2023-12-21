@@ -2,7 +2,7 @@ import styles from "../styles/CardInventory.module.css";
 import { Modal, Button } from "antd";
 import SellCardModal from "./modals/SellCardModal.js";
 import { useState } from "react";
-function CardInventory({ playerName, playerImage, rarity, id }) {
+function CardInventory({ playerName, playerImage, rarity, id, idCard }) {
 
   const [sellCardVisible, setSellCardVisible] = useState(false);
 
@@ -46,7 +46,7 @@ function CardInventory({ playerName, playerImage, rarity, id }) {
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
-        <img src={playerImage} width={148} height={150}height={150} width={148}/>
+        <img src={playerImage} width={148} height={150}/>
         <p>{playerName}</p>
       </div>
       <div>
@@ -60,7 +60,7 @@ function CardInventory({ playerName, playerImage, rarity, id }) {
         visible={sellCardVisible}
         footer={null}
       >
-        <SellCardModal id={id} />
+        <SellCardModal id={id} idCard={idCard}/>
       </Modal>
     </div>
   );
