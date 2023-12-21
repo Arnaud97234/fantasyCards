@@ -1,5 +1,22 @@
 import styles from "../styles/PackMarket.module.css";
-function CardInventory({ rarity }) {
+import { Modal, Button } from "antd";
+import BuyPackModal from "./modals/BuyPackModal.js";
+import { useState } from "react";
+function PackMarket({ rarity, id, token }) {
+
+  const [buyPackVisible, setBuyPackVisible] = useState(false);
+
+  const ModalVisibleBuyPack = () => {
+    setBuyPackVisible(true);
+  };
+
+  const handleCancelModalBuyPack = () => {
+    setBuyPackVisible(false);
+  };
+
+  console.log('idM',id)
+  console.log('idt',token)
+
   let style = {};
   switch (rarity) {
     case 6:
@@ -24,6 +41,10 @@ function CardInventory({ rarity }) {
     default:
       break;
   }
+
+  const handleModalBuyVisible = () => {
+    ModalVisibleBuyPack()
+  }
   return (
     <div className={styles.container}>
       <div className={styles.packContainer} style={style}>
@@ -31,10 +52,24 @@ function CardInventory({ rarity }) {
       </div>
       <div className={styles.alignBtn}>
         <button disabled className={styles.btn}>desc</button>
-        <button disabled className={styles.btn}>buy</button>
+        <button className={styles.btn} onClick={handleModalBuyVisible}>buy</button>
+        <Modal
+        closeIcon={<CustomCloseIcon />}
+        width={300}
+        centered={true}
+        onCancel={() => handleCancelModalBuyPack()}
+        visible={buyPackVisible}
+        footer={null}
+      >
+        <BuyPackModal id={id} sellerToken={token}/>
+      </Modal>
       </div>
     </div>
   );
 }
 
-export default CardInventory;
+const CustomCloseIcon = () => {
+  return <Button className={styles.closeModalButton}>X</Button>;
+};
+
+export default PackMarket;

@@ -2,16 +2,16 @@ import styles from "../styles/CardMarket.module.css";
 import { Modal, Button } from "antd";
 import BuyCardModal from "./modals/BuyCardModal.js";
 import { useState } from "react";
-function CardInventory({ playerName, playerImage, rarity, id, token }) {
+function CardMarket({ playerName, playerImage, rarity, id, token }) {
 
-  const [sellCardVisible, setSellCardVisible] = useState(false);
+  const [buyCardVisible, setBuyCardVisible] = useState(false);
 
-  const ModalVisibleSellCard = () => {
-    setSellCardVisible(true);
+  const ModalVisibleBuyCard = () => {
+    setBuyCardVisible(true);
   };
 
-  const handleCancelModalSellCard = () => {
-    setSellCardVisible(false);
+  const handleCancelModalBuyCard = () => {
+    setBuyCardVisible(false);
   };
 
   console.log('a',id)
@@ -42,7 +42,7 @@ function CardInventory({ playerName, playerImage, rarity, id, token }) {
   }
 
   const handleModalVisible = ()=>{
-    ModalVisibleSellCard()
+    ModalVisibleBuyCard()
   }
 
   return (
@@ -52,15 +52,15 @@ function CardInventory({ playerName, playerImage, rarity, id, token }) {
           <p>{playerName}</p>
       </div>
       <div className={styles.alignBtn}>
-        <button disabled className={styles.btn} onClick={handleModalVisible}>Desc</button>
+        <button disabled className={styles.btn}>Desc</button>
         <button className={styles.btn} onClick={handleModalVisible}>Buy</button>
       </div>
       <Modal
         closeIcon={<CustomCloseIcon />}
         width={300}
         centered={true}
-        onCancel={() => handleCancelModalSellCard()}
-        visible={sellCardVisible}
+        onCancel={() => handleCancelModalBuyCard()}
+        visible={buyCardVisible}
         footer={null}
       >
         <BuyCardModal id={id} sellerToken={token} />
@@ -73,4 +73,4 @@ const CustomCloseIcon = () => {
   return <Button className={styles.closeModalButton}>X</Button>;
 };
 
-export default CardInventory;
+export default CardMarket;
