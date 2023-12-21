@@ -15,6 +15,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+// import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 function Header() {
   const [signupVisible, setSignupVisible] = useState(false);
@@ -72,6 +73,10 @@ function Header() {
     }
   }
 
+  function handleClickAway() {
+    setOpen(false)
+  }
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -87,52 +92,52 @@ function Header() {
       return (
         <div className={styles.navItems}>
           <Stack direction="row" spacing={2}>
-      <div>
-        <Button
-          style={{fontFamily: "Bangers", fontSize: 24, color: "#f2aa4c", backgroundColor: "white", padding: 4, paddingRight: 20, marginRight: 20}}
-          ref={anchorRef}
-          id="composition-button"
-          aria-controls={open ? 'composition-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          Games
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          placement="bottom-start"
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
-              }}
-            >
-              <Paper>
-                <ClickAwayListener>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="composition-menu"
-                    aria-labelledby="composition-button"
-                    onKeyDown={handleListKeyDown}
+            <div>
+              <Button
+                style={{ fontFamily: "Bangers", fontSize: 24, color: "#f2aa4c", backgroundColor: "white", padding: 4, paddingRight: 20, marginRight: 20 }}
+                ref={anchorRef}
+                id="composition-button"
+                aria-controls={open ? 'composition-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                Games
+              </Button>
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
                   >
-                    <MenuItem onClick={handleMatchNotStarted}>Match not started</MenuItem>
-                    <MenuItem onClick={handleMatchFinished}>Match Finished</MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </div>
-    </Stack>
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClickAway}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <MenuItem onClick={handleMatchNotStarted}>Match not started</MenuItem>
+                          <MenuItem onClick={handleMatchFinished}>Match Finished</MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+            </div>
+          </Stack>
           {/* <button onClick={() => {
             router.push("/game");
           }} className={styles.item}>Game</button> */}
@@ -197,10 +202,10 @@ function Header() {
         />
         {navItems()}
       </main>
-      <Modal  width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
+      <Modal width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
         <SignupModal />
       </Modal>
-      <Modal  width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
+      <Modal width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
         <SigninModal />
       </Modal>
     </div>
