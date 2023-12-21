@@ -41,7 +41,7 @@ function PendingGame(props) {
     fetch(`http://localhost:3000/card/find/${name}`)
       .then((response) => response.json())
       .then((card) => {
-        setSelectedCard([...selectedCard,card.data]);
+        setSelectedCard([...selectedCard, card.data]);
         setAddCardVisible(false);
       });
   };
@@ -62,17 +62,18 @@ function PendingGame(props) {
 
   return (
     <div className={styles.gameInfo}>
-      <p className={styles.info}>Match :</p>
-      <p>
-        <img className={styles.img} src={imgTeamHome} /> {teamHome} VS
+      <p className={styles.info}>Match</p>
+      <p className={styles.matchOverview}>
+        <img className={styles.img} src={imgTeamHome} /> {teamHome}
+        <span className={styles.separator}>VS</span>
         <img className={styles.img} src={imgTeamAway} /> {teamAway}
       </p>
       <p>
         Start date : {props.startDate} / End date : {props.endDate}
       </p>
-      <p className={styles.info}>Status : </p>
+      <p className={styles.info}>Status</p>
       <p>{props.status}</p>
-      <p className={styles.info}>Select card : </p>
+      <p className={styles.info}>Select cards</p>
       <div className={styles.allCardContainer}>
         {players}
         <button

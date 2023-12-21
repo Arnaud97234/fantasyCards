@@ -60,7 +60,7 @@ function PassGame(props) {
 
   return (
     <div className={styles.gameInfo}>
-      <p className={styles.info}>Match :</p>
+      <p className={styles.info}>Match</p>
       <p>
         <img className={styles.img} src={imgTeamHome} /> {teamHome} VS
         <img className={styles.img} src={imgTeamAway} /> {teamAway}

@@ -22,7 +22,7 @@ export default function Inventory() {
 
   const tabCards = [];
 
-    userCards &&
+  userCards &&
     userCards.map((card) => {
       const {
         _id,
@@ -71,22 +71,23 @@ export default function Inventory() {
 
   const tabPacks = [];
 
-    userPacks &&
+  userPacks &&
     userPacks.map((pack) => {
       const { _id, rarity, stock, packPrices } = pack;
       if (packPrices && packPrices.length) {
-      for (const data of packPrices) {
-        if (data.userToken === token) {
-          const dataPack = {
-            packId: _id,
-            rarity,
-            stock,
-            packPrice: data ? data.price : null,
-            subDocId: data._id,
-            userToken: data ? data.userToken : null,
-          };
-          tabPacks.push(dataPack);
-        }}
+        for (const data of packPrices) {
+          if (data.userToken === token) {
+            const dataPack = {
+              packId: _id,
+              rarity,
+              stock,
+              packPrice: data ? data.price : null,
+              subDocId: data._id,
+              userToken: data ? data.userToken : null,
+            };
+            tabPacks.push(dataPack);
+          }
+        }
       }
     });
 
@@ -95,52 +96,50 @@ export default function Inventory() {
   });
 
   return (
-    <div>
-      <div className={styles.main}>
-        <h1 className={styles.title}>Inventory</h1>
-        <div className={styles.container}>
-          <div className={styles.content}>
-            <Box sx={{ width: "50%" }}>
-              <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                  <TabList onChange={handleChange} className={styles.tabList}>
-                    <Tab label="Cards" value="1" />
-                    <Tab label="Packs" value="2" />
-                  </TabList>
-                </Box>
-                <TabPanel
-                  style={{
-                    height: "0px",
-                    paddingTop: "50px",
-                    textAlign: "center",
-                    overflow: "auto",
-                    width: "1367px",
-                    height: "100%",
-                  }}
-                  className={styles.cardContainer}
-                  value="1"
-                >
-                  {cards}
-                </TabPanel>
-                <TabPanel
-                  style={{
-                    height: "300px",
-                    padding: "0px",
-                    textAlign: "center",
-                    overflow: "auto",
-                    width: "1367px",
-                    height: "100%",
-                  }}
-                  className={styles.packContainer}
-                  value="2"
-                >
-                  {packPlayer}
-                </TabPanel>
-              </TabContext>
-            </Box>
-          </div>
+    <main className='main'>
+      <h1 className='title'>Inventory</h1>
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <Box sx={{ width: "50%" }}>
+            <TabContext value={value}>
+              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                <TabList onChange={handleChange} className={styles.tabList}>
+                  <Tab className={styles.tab} label="Cards" value="1" />
+                  <Tab className={styles.tab} label="Packs" value="2" />
+                </TabList>
+              </Box>
+              <TabPanel
+                style={{
+                  height: "0px",
+                  paddingTop: "50px",
+                  textAlign: "center",
+                  overflow: "auto",
+                  width: "1367px",
+                  height: "100%",
+                }}
+                className={styles.cardContainer}
+                value="1"
+              >
+                {cards}
+              </TabPanel>
+              <TabPanel
+                style={{
+                  height: "300px",
+                  padding: "0px",
+                  textAlign: "center",
+                  overflow: "auto",
+                  width: "1367px",
+                  height: "100%",
+                }}
+                className={styles.packContainer}
+                value="2"
+              >
+                {packPlayer}
+              </TabPanel>
+            </TabContext>
+          </Box>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

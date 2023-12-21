@@ -1,4 +1,4 @@
-.main {
+/* .main {
     width: 100%;
     height: 89vh;
     display: flex;
@@ -7,14 +7,7 @@
     align-items: center;
     background-color: #36393B;
     padding: 0 20px;
-}
-
-.title {
-    font-family: 'Bangers';
-    font-size: 22px;
-    color: #F2AA4C;
-    font-weight: lighter;
-}
+} */
 
 .homeContent {
     display: flex;

@@ -1,18 +1,7 @@
-.main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    width: auto;
-    background-color: #36393B;
-    color: #F2AA4C;
-  }
-
-
-.marketContainer {
+.container {
   display: flex;
   flex-direction:column;
-  width: 100%;
-  
+  margin: 0px 40px;
 }
 
 .content {
@@ -28,13 +17,8 @@
 .cards{
   display: flex;
   overflow: auto;
-}
-
-.boxTitle1 {
-  font-family: 'Bangers';
-  font-weight: normal;
-  text-align: center;
-  color: #F2AA4C;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .boxTitle2 {

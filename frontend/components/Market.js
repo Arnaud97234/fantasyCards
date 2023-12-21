@@ -33,7 +33,7 @@ function Market() {
 
 
       for (const data of cardPrices) {
-        if(data.price > 0){
+        if (data.price > 0) {
           const dataCard = {
             cardId: _id,
             teamId,
@@ -43,7 +43,7 @@ function Market() {
             picture,
             eventsId,
             cardPrice: data ? data.price : null,
-            subDocId:data._id,
+            subDocId: data._id,
             userToken: data
               ? data.userToken
               : null,
@@ -91,7 +91,7 @@ function Market() {
       } = pack;
 
       for (const data of packPrices) {
-        if(data.price > 0){
+        if (data.price > 0) {
           const dataPack = {
             packId: _id,
             rarity,
@@ -115,9 +115,9 @@ function Market() {
     });
 
   return (
-    <main className={styles.main}>
-      <h1 className={styles.boxTitle1}>FANTASY MARKET</h1>
-      <div className={styles.marketContainer}>
+    <main className='main'>
+      <h1 className='title'>FANTASY MARKET</h1>
+      <div className={styles.container}>
         <div className={styles.content}>
           <h3 className={styles.boxTitle2}>Buy Cards</h3>
           <div className={styles.cards}>{cards}</div>
