@@ -7,16 +7,15 @@ const Team = require("../models/teams");
 
 require("../models/connection");
 
-router.get("/find/:name", (req, res)=> {
-  Card.findOne({name: req.params.name})
-  .then((data)=> {
-    res.json({data})
-  })
+router.get("/find/:name", (req, res) => {
+  Card.findOne({ name: req.params.name })
+    .then((data) => {
+      res.json({ data })
+    })
 })
 
 router.get("/marketCards", (req, res) => {
   Card.find({ "cardPrices.price": { $gt: 0 } }).then((card) => {
-    console.log(card);
     res.json({ result: true, card: card });
   });
 });
@@ -38,26 +37,25 @@ router.get("/addCardInGame/:userToken", (req, res) => {
   User.findOne({ token: req.params.userToken })
     .populate("cardsId")
     .then((data) => {
-      console.log(data);
       res.json({ cards: data.cardsId });
     });
 });
 
 router.get("/:th/:ta/:token", async (req, res) => {
-    const teamHome = await Team.findOne({ id: req.params.th });
-    const teamAway = await Team.findOne({ id: req.params.ta });
+  const teamHome = await Team.findOne({ id: req.params.th });
+  const teamAway = await Team.findOne({ id: req.params.ta });
 
-    const cardTa = await Card.find({
-      teamId: teamHome.id,
-      "cardPrices.userToken": req.params.token
-    });
+  const cardTa = await Card.find({
+    teamId: teamHome.id,
+    "cardPrices.userToken": req.params.token
+  });
 
-    const cardTh = await Card.find({
-      teamId: teamAway.id,
-      "cardPrices.userToken": req.params.token
-    });
+  const cardTh = await Card.find({
+    teamId: teamAway.id,
+    "cardPrices.userToken": req.params.token
+  });
 
-    res.json({ result: true, teamHome, teamAway, cardTa, cardTh });
+  res.json({ result: true, teamHome, teamAway, cardTa, cardTh });
 });
 
 

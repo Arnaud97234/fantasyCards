@@ -6,16 +6,20 @@ const User = require("../models/users");
 const { checkBody } = require("../modules/checkBody");
 const uid2 = require("uid2");
 const bcrypt = require("bcrypt");
+const Pack = require("../models/packs")
 
 router.get("/", function (req, res, next) {
   res.send("respond with a resource");
 });
 
-router.post("/signup", (req, res) => {
+router.post("/signup", async (req, res) => {
   if (!checkBody(req.body, ["username", "email", "password"])) {
     res.json({ result: false, error: "Missing or empty fields" });
     return;
   }
+  // Get pack
+  const startupPack = await Pack.findOne({ "rarity": 4 })
+  console.log("startupPack: ", startupPack._id)
 
   // Check if user is not already registered
   User.findOne({ email: req.body.email }).then((data) => {
@@ -28,10 +32,10 @@ router.post("/signup", (req, res) => {
         email: req.body.email,
         password: hash,
         token: token,
-        credits: Math.floor(Math.random()*89999+10000),
+        credits: Math.floor(Math.random() * 89999 + 10000),
         gamesId: [],
         cardsId: [],
-        packsId: ["657ad5ea8f96e935b9b105a4"],
+        packsId: [startupPack._id],
       });
       newUser.save().then((newDoc) => {
         res.json({
