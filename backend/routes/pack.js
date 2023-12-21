@@ -14,22 +14,27 @@ router.get("/marketPacks", (req, res) => {
     });
 });
 
-router.patch("/openPack/:userToken/:userPack", async (req, res) => {
-  // find the pack to open
-  const user = await User.findOne({ "token": req.params.userToken })
-  console.log("User cards: ", user.cardsId)
-  const userId = await user._id
-  const pack = await Pack.findOne({ "_id": req.params.userPack, "packPrices.userToken": req.params.userToken })
-  // Decrease pack Stock
-  const packToUpdate = pack.packPrices[0]._id
-  const newStock = Number(pack.stock) - 1
-  await Pack.updateOne({ "packPrices.userToken": req.params.userToken }, { "stock": newStock })
+router.put("/open/:userToken/:subDocIdPack", async (req, res) => {
+  const pack = await Pack.findOne({
+    "packPrices.userToken": req.params.userToken,
+    "packPrices._id": req.params.subDocIdPack,
+  });
+  
 
-  // Remove user from Pack
+  console.log(pack);
+
   await Pack.updateOne(
-    { "_id": req.params.userPack },
-    { $pull: { "packPrices": { "_id": packToUpdate } } }
-  )
+    {
+      "packPrices.userToken": req.params.userToken,
+      "packPrices._id": req.params.subDocIdPack,
+    },
+    {
+      $pull: {
+        packPrices: { _id: req.params.subDocIdPack }
+      }
+    }
+  );
+
   const cardsToAdd = await Card.aggregate([
     { $sample: { size: 5 } }
   ])
@@ -37,14 +42,20 @@ router.patch("/openPack/:userToken/:userPack", async (req, res) => {
     await Card.updateOne({ "_id": card._id }, {
       $push: {
         "cardPrices": {
-          price: 3000,
-          userId: userId
+          price: 0,
+          userToken: req.params.userToken
         }
       }
     })
+  
+  await User.findOneAndUpdate(
+    { token: req.params.userToken },
+    {
+      $pull: { packsId: pack._id }
+    }
+  );
 
-    await User.updateOne({ "token": req.params.userToken }, { $push: { "cardsId": card._id } })
-  })
-})
+  res.json({ result: true });
+});})
 
-module.exports = router
+module.exports = router;
