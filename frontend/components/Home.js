@@ -24,8 +24,8 @@ function Home() {
 
     return (
         <div>
-            <main className={styles.main}>
-                <h2 className={styles.title}>Home</h2>
+            <main className='main'>
+                <h1 className='title'>Home</h1>
                 <div className={styles.homeContent}>
                     <div className={styles.infoGamesContainer}>
                         <div className={styles.box} id={styles.infoBox}>

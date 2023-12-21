@@ -3,7 +3,7 @@ import styles from '../styles/Login.module.css';
 function Login() {
   return (
     <div>
-      <main className={styles.main}>
+      <main className='main'>
         <div className={styles.box}>
           <div className={styles.boxDesc}>
             <h2 className={styles.boxTitle}>Create your team</h2>
