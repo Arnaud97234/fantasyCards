@@ -2,7 +2,7 @@ import styles from '../../styles/Header.module.css'
 import { useSelector } from 'react-redux'
 
 
-function SellCardModal({id, sellerToken}) {
+function OpenPackModal({id, sellerToken}) {
     const token = useSelector((state)=> state.users.value.token)
     console.log(id);
     console.log(sellerToken)
@@ -28,4 +28,4 @@ function SellCardModal({id, sellerToken}) {
     )
 }
 
-export default SellCardModal
+export default OpenPackModal
