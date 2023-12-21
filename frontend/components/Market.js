@@ -114,7 +114,7 @@ function Market() {
     tabPacks &&
     tabPacks.map((data, i) => {
       console.log(data);
-      return <PackMarket key={i} id={data.subDocId} rarity={data.rarity} />;
+      return <PackMarket key={i} id={data.subDocId} token={data.userToken} rarity={data.rarity} />;
     });
 
   return (
