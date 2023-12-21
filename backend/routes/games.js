@@ -4,6 +4,7 @@ var router = express.Router();
 require("../models/connection");
 const Game = require("../models/games");
 const Team = require("../models/teams");
+const User = require("../models/users");
 
 router.get("/MatchNotStarted", (req, res) => {
   Game.find({ status: "Match not started" }).then((games) => {
@@ -39,5 +40,23 @@ router.get("/teams/:teamHomeId/:teamAwayId", async (req, res) => {
     
   });
 });
+
+router.put("/creditReward/:userToken", async (req, res) => {
+  const user = await User.findOneAndUpdate(
+    {
+      token: req.params.userToken
+    },
+    {
+      $inc: {
+        credits: 1000
+      },
+    },
+    {new: true}
+  );
+
+  res.json({ result: true });
+});
+
+
 
 module.exports = router;

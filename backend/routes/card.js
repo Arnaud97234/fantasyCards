@@ -4,7 +4,6 @@ var router = express.Router();
 const Card = require("../models/cards");
 const User = require("../models/users");
 const Team = require("../models/teams");
-const User = require("../models/users");
 
 require("../models/connection");
 
@@ -75,8 +74,6 @@ router.put("/buy/:buyertoken/:sellerToken/:subDocId", async (req, res) => {
       },
     }
   );
-
-  console.log(card._id);
 
   const sub = card.cardPrices.find(
     (sd) => sd._id.toString() === req.params.subDocId

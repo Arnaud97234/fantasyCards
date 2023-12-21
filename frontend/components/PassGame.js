@@ -1,5 +1,6 @@
 import styles from "../styles/PendingGame.module.css";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button } from "antd";
 import AddCardInGameModal from "./modals/AddCardInGameModal.js";
 import CardGameTa from "./modals/CardGameTa.js";
@@ -12,6 +13,7 @@ function PassGame(props) {
   const [imgTeamAway, setImgTeamAway] = useState("");
   const [addCardVisible, setAddCardVisible] = useState(false);
   const [selectedCard, setSelectedCard] = useState([]);
+  const token = useSelector((state) => state.users.value.token);
 
   useEffect(() => {
     fetch(
@@ -35,7 +37,17 @@ function PassGame(props) {
   };
 
   const handleClaemCredits = () => {
-    setAddCardVisible(false);
+    fetch(`http://localhost:3000/games/creditReward/${token}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result === true) {
+          setAddCardVisible(false);
+        }
+      });
   };
 
   const handleClaemPack = () => {
@@ -45,31 +57,6 @@ function PassGame(props) {
   const CustomCloseIcon = () => {
     return <Button className={styles.closeModalButton}>X</Button>;
   };
-
-  const handleSelectedCard = (name) => {
-    fetch(`http://localhost:3000/card/${name}`)
-      .then((response) => response.json())
-      .then((card) => {
-        console.log(card);
-        setSelectedCard([...selectedCard,card.data]);
-        setAddCardVisible(false);
-      });
-  };
-  console.log(selectedCard);
-
-  const players =
-    selectedCard &&
-    selectedCard.map((data, i) => {
-      return (
-        <CardGameTa
-          key={i}
-          playerName={data.name}
-          playerImage={data.picture}
-          rarity={data.rarity}
-          imgTeamAway={props.imgTeamAway}
-        />
-      );
-    });
 
   return (
     <div className={styles.gameInfo}>
@@ -83,18 +70,16 @@ function PassGame(props) {
       </p>
       <p className={styles.info}>Status : </p>
       <p>{props.status}</p>
-      {/* <p className={styles.info}>Select card : </p>
-      <div className={styles.allCardContainer}>
-        {players} */}
-        <button
-          className={styles.buttonRewards}
-          onClick={() => {
-            handleAddCard();
-          }}
-        >
-          <p >Claim rewards</p>
-        </button>
-      {/* </div> */}
+
+      <button
+        className={styles.buttonRewards}
+        onClick={() => {
+          handleAddCard();
+        }}
+      >
+        <p>Claim rewards</p>
+      </button>
+
       <Modal
         closeIcon={<CustomCloseIcon />}
         width={600}
@@ -103,12 +88,17 @@ function PassGame(props) {
         visible={addCardVisible}
         footer={null}
       >
-        <h2 className={styles.titreRewards}>Choose your reward :</h2>
-        <div className={styles.texteRewardsContainer}><p onClick={() => {
-            handleClaemCredits();
-          }} className={styles.texteRewards}>1 000 Crédits </p><p className={styles.titreRewards}> OR</p> <div onClick={() => {
-            handleClaemPack();
-          }} className={styles.packRewards}><Pack rarity={2} /></div></div>
+        <h2 className={styles.titreRewards}>Cleam your reward :</h2>
+        <div className={styles.texteRewardsContainer}>
+          <p
+            onClick={() => {
+              handleClaemCredits();
+            }}
+            className={styles.texteRewards}
+          >
+            1 000 Crédits{" "}
+          </p>
+        </div>
       </Modal>
     </div>
   );
