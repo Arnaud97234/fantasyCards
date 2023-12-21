@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.css'
 import { useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
+import { useRouter } from "next/router";
 
 function Home() {
     const [username, setUsername] = useState('')
@@ -9,7 +10,7 @@ function Home() {
     const [packs, setPacks] = useState([])
 
     const userToken = useSelector((state) => state.users.value.token)
-
+    const router = useRouter()
     useEffect(() => {
         return () => {
             fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
@@ -21,6 +22,13 @@ function Home() {
         }
     }, [])
 
+    const handleGame = () => {
+        router.push("/gameFinished")
+    }
+
+    const handleInventory = () => {
+        router.push("/inventory")
+    }
 
     return (
         <div>
@@ -42,7 +50,7 @@ function Home() {
                                 <span className={styles.contentItem}>Game1: </span>
                                 <span className={styles.contentItem}>Game2: </span>
                             </div>
-                            <button className={styles.contentButton}>View more</button>
+                            <button className={styles.contentButton} onClick={() => { handleGame() }}>View more</button>
                         </div>
                     </div>
                     <div className={styles.box} id={styles.inventoryBox}>
@@ -51,7 +59,7 @@ function Home() {
                             <span className={styles.contentItem}>Total cards: {cards.length}</span>
                             <span className={styles.contentItem}>Total packs: {packs.length}</span>
                         </div>
-                        <button className={styles.contentButton}>View more</button>
+                        <button className={styles.contentButton} onClick={() => { handleInventory() }}>View more</button>
                     </div>
                 </div>
             </main>

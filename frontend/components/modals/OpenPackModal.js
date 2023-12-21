@@ -18,7 +18,7 @@ function OpenPackModal({ id, sellerToken }) {
     return (
         <div className={styles.modal}>
             <main className={styles.modalContainer}>
-                <p>Félicitation vos venez d'obtenir 5 nouvelles cartes</p>
+                <p>Congrats! You now have 5 new cards</p>
                 <button className={styles.modalButton} onClick={handleBuyCard}>Confirm</button>
             </main>
         </div>

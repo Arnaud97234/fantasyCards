@@ -7,6 +7,7 @@
 
 .main{
     background-color: #36393b;
+    display: flex;
 }
 
 .content {
@@ -14,8 +15,10 @@
   background-color: white;
   font-family: "Calistoga";
   height: 85%;
+  
 }
 
 .cardContainer, .packContainer {
   display: flex;
+  flex-wrap: wrap;
 }
