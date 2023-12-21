@@ -5,8 +5,19 @@ require("../models/connection");
 const Game = require("../models/games");
 const Team = require("../models/teams");
 
-router.get("/", (req, res) => {
+router.get("/MatchNotStarted", (req, res) => {
   Game.find({ status: "Match not started" }).then((games) => {
+    if (games === null) {
+      res.json({ result: false, error: "Events not found" });
+      return;
+    } else {
+      res.json({ result: true, games });
+    }
+  });
+});
+
+router.get("/MatchFinished", (req, res) => {
+  Game.find({ status: "Match Finished" }).then((games) => {
     if (games === null) {
       res.json({ result: false, error: "Events not found" });
       return;

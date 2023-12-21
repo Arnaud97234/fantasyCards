@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Modal, Button } from "antd";
 import AddCardInGameModal from "./modals/AddCardInGameModal.js";
 import CardGameTa from "./modals/CardGameTa.js";
+import Pack from "./Pack.js";
 
-function PendingGame(props) {
+function PassGame(props) {
   const [teamHome, setTeamHome] = useState("");
   const [imgTeamHome, setImgTeamHome] = useState("");
   const [teamAway, setTeamAway] = useState("");
@@ -30,6 +31,14 @@ function PendingGame(props) {
   };
 
   const handleCancelAddCard = () => {
+    setAddCardVisible(false);
+  };
+
+  const handleClaemCredits = () => {
+    setAddCardVisible(false);
+  };
+
+  const handleClaemPack = () => {
     setAddCardVisible(false);
   };
 
@@ -74,18 +83,18 @@ function PendingGame(props) {
       </p>
       <p className={styles.info}>Status : </p>
       <p>{props.status}</p>
-      <p className={styles.info}>Select card : </p>
+      {/* <p className={styles.info}>Select card : </p>
       <div className={styles.allCardContainer}>
-        {players}
+        {players} */}
         <button
-          className={styles.buttonContainer}
+          className={styles.buttonRewards}
           onClick={() => {
             handleAddCard();
           }}
         >
-          <div className={styles.addCard}>+</div>
+          <p >Claim rewards</p>
         </button>
-      </div>
+      {/* </div> */}
       <Modal
         closeIcon={<CustomCloseIcon />}
         width={600}
@@ -94,16 +103,15 @@ function PendingGame(props) {
         visible={addCardVisible}
         footer={null}
       >
-        <AddCardInGameModal
-          handleSelectedCard={handleSelectedCard}
-          teamHomeId={props.teamHomeId}
-          teamAwayId={props.teamAwayId}
-          imgTeamHome={props.imgTeamHome}
-          imgTeamAway={props.imgTeamAway}
-        />
+        <h2 className={styles.titreRewards}>Choose your reward :</h2>
+        <div className={styles.texteRewardsContainer}><p onClick={() => {
+            handleClaemCredits();
+          }} className={styles.texteRewards}>1 000 Crédits </p><p className={styles.titreRewards}> OR</p> <div onClick={() => {
+            handleClaemPack();
+          }} className={styles.packRewards}><Pack rarity={2} /></div></div>
       </Modal>
     </div>
   );
 }
 
-export default PendingGame;
+export default PassGame;

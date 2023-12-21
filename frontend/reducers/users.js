@@ -14,7 +14,7 @@ export const usersSlice = createSlice({
             state.value.email = action.payload.email
             state.value.cardsList = action.payload.cardsList
             state.value.packsList = action.payload.packsList
-            state.value.packsList = action.payload.gameList
+            state.value.gameList = action.payload.gameList
         },
         logout: (state) => {
             state.value.token = null

@@ -15,40 +15,40 @@ function AddCardInGameModal(props) {
     )
       .then((response) => response.json())
       .then((data) => {
-        setCardsTh( data.cardTa);
+        setCardsTh(data.cardTa);
         setCardsTa(data.cardTh);
       });
   }, []);
 
-  
+  const playersTh =
+    cardsTh &&
+    cardsTh.map((data, i) => {
+      return (
+        <CardGameTh
+        handleSelectedCard={props.handleSelectedCard}
+          key={i}
+          playerName={data.name}
+          playerImage={data.picture}
+          rarity={data.rarity}
+          imgTeamHome={props.imgTeamHome}
+        />
+      );
+    });
 
-  const playersTh = cardsTh && cardsTh.map((data, i) => {
-    return (
-      <CardGameTh
-        key={i}
-        playerName={data.name}
-        playerImage={data.picture}
-        rarity={data.rarity}
-        imgTeamHome={props.imgTeamHome}
-        adPTh={props.addPTh}
-      />
-    );
-  });
-
-  const playersTa = cardsTa && cardsTa.map((data, i) => {
-    return (
-      <CardGameTa
-        key={i}
-        playerName={data.name}
-        playerImage={data.picture}
-        rarity={data.rarity}
-        imgTeamAway={props.imgTeamAway}
-        onClick={() => {
-          handleAddPlayer();
-        }}
-      />
-    );
-  });
+  const playersTa =
+    cardsTa &&
+    cardsTa.map((data, i) => {
+      return (
+        <CardGameTa
+        handleSelectedCard={props.handleSelectedCard}
+          key={i}
+          playerName={data.name}
+          playerImage={data.picture}
+          rarity={data.rarity}
+          imgTeamAway={props.imgTeamAway}
+        />
+      );
+    });
 
   return (
     <div className={styles.modal}>

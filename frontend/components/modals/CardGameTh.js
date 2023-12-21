@@ -1,6 +1,5 @@
 import styles from "../../styles/CardMarket.module.css";
-function CardGameTh({ playerName, playerImage, rarity, imgTeamHome, adPTh}) {
-
+function CardGameTh({ playerName, playerImage, rarity, imgTeamHome, handleSelectedCard }) {
   let style = {};
   switch (rarity) {
     case 6:
@@ -26,15 +25,13 @@ function CardGameTh({ playerName, playerImage, rarity, imgTeamHome, adPTh}) {
       break;
   }
 
-  const handleAddPlayer = ()=> {
-    adPTh
-  }
-
   return (
-    <div className={styles.container}>
-      <div onClick={()=>handleAddPlayer()}  className={styles.cardContainer} style={style}>
-          <img height={150} width={148} src={playerImage} />
-          <div className={styles.logo}><img height={20} width={20} src={imgTeamHome} /> <p>{playerName}</p></div>
+    <div className={styles.container} onClick={() => handleSelectedCard(playerName)}>
+      <div className={styles.cardContainer} style={style}>
+        <img height={150} width={148} src={playerImage} />
+        <div className={styles.logo}>
+          <img height={20} width={20} src={imgTeamHome} /> <p>{playerName}</p>
+        </div>
       </div>
     </div>
   );

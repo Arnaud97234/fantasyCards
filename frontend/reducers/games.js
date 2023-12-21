@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    value: { pendingGames: [], futureGames: [] }
+    value: { pendingGames: [], finishGames: [] }
 }
 
 export const gameSlice = createSlice({
@@ -11,11 +11,11 @@ export const gameSlice = createSlice({
         addPendingGamesToStore: (state, action) => {
             state.value.pendingGames = (action.payload)
         },
-        addFutureGamesToStore: (state, action) => {
-            state.value.futureGames = (action.payload)
+        addFinishGamesToStore: (state, action) => {
+            state.value.finishGames = (action.payload)
         },
     }
 })
 
-export const { addPendingGamesToStore, addFutureGamesToStore } = gameSlice.actions
+export const { addPendingGamesToStore, addFinishGamesToStore } = gameSlice.actions
 export default gameSlice.reducer

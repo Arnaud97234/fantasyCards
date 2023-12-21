@@ -8,6 +8,13 @@ const User = require("../models/users");
 
 require("../models/connection");
 
+router.get("/:name", (req, res)=> {
+  Card.findOne({name: req.params.name})
+  .then((data)=> {
+    res.json({data})
+  })
+})
+
 router.get("/marketCards", (req, res) => {
   Card.find({ "cardPrices.price": { $gt: 0 } }).then((card) => {
     console.log(card);

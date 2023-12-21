@@ -14,7 +14,7 @@
 }
 .allCardContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 .cardContainer {
     margin-bottom: 20px;
@@ -33,10 +33,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 220px;
+    height: 205px;
     width: 150px;
     background-color: #E5E4E2;
     border-radius: 10px;
+    margin-left: 2.5%;
 }
 .addCard {
     display: flex;
@@ -82,4 +83,37 @@
 .img {
     height: 50px;
     width: 50px;
+}
+.buttonRewards {
+    height: 80px;
+    width: 150px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: #f2aa4c;
+    color: #36393B;
+    font-family: "Bangers";
+    font-size: 20px;
+    cursor: pointer;
+}
+.titreRewards {
+    color: #f2aa4c;
+    font-family: "Bangers";
+    text-align: center;
+    font-size: 30px;
+    font-weight: lighter;
+}
+.texteRewards {
+    font-family: "Calistoga";
+    color: #36393B;
+    font-size: 20px;
+    cursor: pointer;
+}
+.texteRewardsContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.packRewards {
+    cursor: pointer;
 }

@@ -7,13 +7,13 @@ import {
 } from "../reducers/games";
 
 
-function Game() {
+function MatchNotStarted() {
   const dispatch = useDispatch();
   const infoPendingGames = useSelector((state) => state.games.value.pendingGames);
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/games")
+    fetch("http://localhost:3000/games/MatchNotStarted")
       .then((response) => response.json())
       .then((data) => {
         
@@ -47,4 +47,4 @@ function Game() {
   );
 }
 
-export default Game;
+export default MatchNotStarted;

@@ -1,6 +1,5 @@
 import styles from "../../styles/CardMarket.module.css";
-function CardGameTa({ playerName, playerImage, rarity, imgTeamAway }) {
-
+function CardGameTa({ playerName, playerImage, rarity, imgTeamAway, handleSelectedCard }) {
   let style = {};
   switch (rarity) {
     case 6:
@@ -27,10 +26,12 @@ function CardGameTa({ playerName, playerImage, rarity, imgTeamAway }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={() => handleSelectedCard(playerName)}>
       <div className={styles.cardContainer} style={style}>
-          <img height={150} width={148} src={playerImage} />
-          <div className={styles.logo}><img height={20} width={20} src={imgTeamAway} /> <p>{playerName}</p></div>
+        <img height={150} width={148} src={playerImage} />
+        <div className={styles.logo}>
+          <img height={20} width={20} src={imgTeamAway} /> <p>{playerName}</p>
+        </div>
       </div>
     </div>
   );
