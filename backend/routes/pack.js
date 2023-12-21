@@ -68,6 +68,7 @@ router.patch("/openPack/:userToken/:userPack", async (req, res) => {
     })
 
     await User.updateOne({ "token": req.params.userToken }, { $push: { "cardsId": card._id } })
+    res.json({ result: true, newCards: cardsToAdd })
   })
 })
 
