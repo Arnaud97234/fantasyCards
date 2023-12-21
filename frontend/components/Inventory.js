@@ -15,6 +15,7 @@ export default function Inventory() {
   const userPacks = useSelector((state) => state.users.value.packsList);
   const token = useSelector((state) => state.users.value.token);
   const [value, setValue] = useState("1");
+  console.log(userPacks);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

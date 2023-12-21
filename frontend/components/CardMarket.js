@@ -48,7 +48,7 @@ function CardMarket({ playerName, playerImage, rarity, id, token }) {
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer} style={style}>
-          <img src={playerImage} width={148} height={150}/>
+          <img height={150} width={148} src={playerImage} />
           <p>{playerName}</p>
       </div>
       <div className={styles.alignBtn}>

@@ -5,7 +5,17 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { logout } from "../reducers/users.js";
-import { Modal, Button } from 'antd';
+import { Modal } from 'antd';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Stack from '@mui/material/Stack';
+// import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 function Header() {
   const [signupVisible, setSignupVisible] = useState(false);
@@ -31,13 +41,106 @@ function Header() {
     setSigninVisible(false);
   };
 
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleMatchNotStarted = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    router.push("/gameNotStarted")
+    setOpen(false);
+  };
+
+  const handleMatchFinished = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    router.push("/gameFinished")
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === 'Escape') {
+      setOpen(false);
+    }
+  }
+
+  function handleClickAway() {
+    setOpen(false)
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
   const navItems = () => {
     if (isConnected) {
       return (
         <div className={styles.navItems}>
-          <button onClick={() => {
+          <Stack direction="row" spacing={2}>
+            <div>
+              <Button
+                style={{ fontFamily: "Bangers", fontSize: 24, color: "#f2aa4c", backgroundColor: "white", padding: 4, paddingRight: 20, marginRight: 20 }}
+                ref={anchorRef}
+                id="composition-button"
+                aria-controls={open ? 'composition-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+              >
+                Games
+              </Button>
+              <Popper
+                open={open}
+                anchorEl={anchorRef.current}
+                role={undefined}
+                placement="bottom-start"
+                transition
+                disablePortal
+              >
+                {({ TransitionProps, placement }) => (
+                  <Grow
+                    {...TransitionProps}
+                    style={{
+                      transformOrigin:
+                        placement === 'bottom-start' ? 'left top' : 'left bottom',
+                    }}
+                  >
+                    <Paper>
+                      <ClickAwayListener onClickAway={handleClickAway}>
+                        <MenuList
+                          autoFocusItem={open}
+                          id="composition-menu"
+                          aria-labelledby="composition-button"
+                          onKeyDown={handleListKeyDown}
+                        >
+                          <MenuItem onClick={handleMatchNotStarted}>Match not started</MenuItem>
+                          <MenuItem onClick={handleMatchFinished}>Match Finished</MenuItem>
+                        </MenuList>
+                      </ClickAwayListener>
+                    </Paper>
+                  </Grow>
+                )}
+              </Popper>
+            </div>
+          </Stack>
+          {/* <button onClick={() => {
             router.push("/game");
-          }} className={styles.item}>Game</button>
+          }} className={styles.item}>Game</button> */}
           <button onClick={() => {
             router.push("/market");
           }} className={styles.item} >Market</button>
@@ -99,20 +202,20 @@ function Header() {
         />
         {navItems()}
       </main>
-      <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
+      <Modal width={300} centered={true} onCancel={() => handleCancelSignUp()} visible={signupVisible} footer={null}>
         <SignupModal />
       </Modal>
-      <Modal closeIcon={<CustomCloseIcon />} width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
+      <Modal width={300} centered={true} onCancel={() => handleCancelSignIn()} visible={signinVisible} footer={null}>
         <SigninModal />
       </Modal>
     </div>
   );
 }
-
-const CustomCloseIcon = () => {
-  return (
-    <Button className={styles.closeModalButton}>X</Button>
-  );
-};
+// closeIcon={<CustomCloseIcon />}
+// const CustomCloseIcon = () => {
+//   return (
+//     <Button className={styles.closeModalButton}>X</Button>
+//   );
+// };
 
 export default Header;

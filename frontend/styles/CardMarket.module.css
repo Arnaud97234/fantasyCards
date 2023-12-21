@@ -41,3 +41,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+.logo {
+  display: flex;
+  align-items: center;
+}
