@@ -131,6 +131,7 @@ export default function Inventory() {
                     height: "0px",
                     paddingTop: "50px",
                     textAlign: "center",
+                    overflow:'auto',width:'1367px',height:'100%'
                   }}
                   className={styles.cardContainer}
                   value="1"

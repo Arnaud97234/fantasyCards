@@ -48,14 +48,16 @@ router.put("/open/:userToken/:subDocIdPack", async (req, res) => {
       }
     })
   
-  await User.findOneAndUpdate(
+  await User.updateOne(
     { token: req.params.userToken },
     {
       $pull: { packsId: pack._id }
     }
   );
+  await User.updateOne({ "token": req.params.userToken }, { $push: { "cardsId": card._id } })
 
-  res.json({ result: true });
-});})
+  
+});
+res.json({ result: true });})
 
 module.exports = router;

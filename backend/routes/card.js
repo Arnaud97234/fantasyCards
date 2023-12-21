@@ -47,7 +47,7 @@ router.put("/buy/:buyertoken/:sellerToken/:subDocId", async (req, res) => {
   const sub = card.cardPrices.find(
     (sd) => sd._id.toString() === req.params.subDocId
   );
-  const buyer = await User.findOneAndUpdate(
+  await User.findOneAndUpdate(
     { token: req.params.buyertoken },
     {
       $push: { cardsId: card._id },
@@ -55,7 +55,7 @@ router.put("/buy/:buyertoken/:sellerToken/:subDocId", async (req, res) => {
     }
   );
 
-  const seller = await User.findOneAndUpdate(
+  await User.findOneAndUpdate(
     { token: req.params.sellerToken },
     {
       $pull: { cardsId: card._id },
