@@ -15,7 +15,6 @@ export default function Inventory() {
   const userPacks = useSelector((state) => state.users.value.packsList);
   const token = useSelector((state) => state.users.value.token);
   const [value, setValue] = useState("1");
-  console.log(userPacks);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -23,7 +22,6 @@ export default function Inventory() {
 
   const tabCards = [];
 
-  const cardsList =
     userCards &&
     userCards.map((card) => {
       const {
@@ -50,7 +48,6 @@ export default function Inventory() {
             cardPrice: data ? data.price : null,
             subDocId: data._id,
             userToken: data ? data.userToken : null,
-            // Ajoutez d'autres champs si nécessaire
           };
           tabCards.push(dataCard);
         }
@@ -74,11 +71,10 @@ export default function Inventory() {
 
   const tabPacks = [];
 
-  const packsList =
     userPacks &&
     userPacks.map((pack) => {
       const { _id, rarity, stock, packPrices } = pack;
-
+      if (packPrices && packPrices.length) {
       for (const data of packPrices) {
         if (data.userToken === token) {
           const dataPack = {
@@ -88,10 +84,9 @@ export default function Inventory() {
             packPrice: data ? data.price : null,
             subDocId: data._id,
             userToken: data ? data.userToken : null,
-            // Ajoutez d'autres champs si nécessaire
           };
           tabPacks.push(dataPack);
-        }
+        }}
       }
     });
 

@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux'
 
 function OpenPackModal({ id, sellerToken }) {
     const token = useSelector((state) => state.users.value.token)
-    console.log(id);
-    console.log(sellerToken)
 
     const handleBuyCard = () => {
         fetch(`http://localhost:3000/pack/open/${token}/${id}`, {

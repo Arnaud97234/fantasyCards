@@ -14,8 +14,6 @@ function CardMarket({ playerName, playerImage, rarity, id, token }) {
     setBuyCardVisible(false);
   };
 
-  console.log('a',id)
-  console.log('b',token)
   let style = {};
   switch (rarity) {
     case 6:

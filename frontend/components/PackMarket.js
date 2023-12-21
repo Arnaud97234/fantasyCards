@@ -14,8 +14,6 @@ function PackMarket({ rarity, id, token }) {
     setBuyPackVisible(false);
   };
 
-  console.log('idM',id)
-  console.log('idt',token)
 
   let style = {};
   switch (rarity) {

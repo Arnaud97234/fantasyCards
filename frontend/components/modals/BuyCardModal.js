@@ -16,8 +16,6 @@ function BuyCardModal({id, sellerToken}) {
         })
     }
 
-    console.log('id',id)
-    console.log('sell',sellerToken)
     return (
         <div className={styles.modal}>
             <main className={styles.modalContainer}>
