@@ -1,11 +1,14 @@
 import styles from '../../styles/Header.module.css'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { removePackToStore } from '../../reducers/users'
 
 
-function SellPackModal({id}) {
+function SellPackModal({id, packId}) {
     const [price, setPrice] = useState('')
     const token = useSelector((state)=> state.users.value.token)
+    const dispatch = useDispatch()
 
     const handleSetPrice = () => {
         fetch(`http://localhost:3000/pack/sell/${token}/${id}`, {
@@ -15,6 +18,7 @@ function SellPackModal({id}) {
         })
         .then(response => response.json())
         .then(data => {
+            dispatch(removePackToStore(packId))
         })
     }
     return (

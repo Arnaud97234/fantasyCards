@@ -31,8 +31,7 @@ router.get('/setTeams', (req, res) => {
           image: e.team.logo,
           sport: 'football'
         })
-        console.log(newTeam)
-        newTeam.save().then(console.log('teams added'))
+        newTeam.save().then()
       })
         .then(() => {
           Team.find().then((data) =>

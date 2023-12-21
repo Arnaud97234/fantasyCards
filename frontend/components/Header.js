@@ -15,7 +15,6 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-// import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 function Header() {
   const [signupVisible, setSignupVisible] = useState(false);
@@ -77,7 +76,6 @@ function Header() {
     setOpen(false)
   }
 
-  // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -138,9 +136,6 @@ function Header() {
               </Popper>
             </div>
           </Stack>
-          {/* <button onClick={() => {
-            router.push("/game");
-          }} className={styles.item}>Game</button> */}
           <button onClick={() => {
             router.push("/market");
           }} className={styles.item} >Market</button>
@@ -211,11 +206,5 @@ function Header() {
     </div>
   );
 }
-// closeIcon={<CustomCloseIcon />}
-// const CustomCloseIcon = () => {
-//   return (
-//     <Button className={styles.closeModalButton}>X</Button>
-//   );
-// };
 
 export default Header;

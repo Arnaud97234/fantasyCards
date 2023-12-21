@@ -41,12 +41,10 @@ function PendingGame(props) {
     fetch(`http://localhost:3000/card/find/${name}`)
       .then((response) => response.json())
       .then((card) => {
-        console.log(card);
         setSelectedCard([...selectedCard,card.data]);
         setAddCardVisible(false);
       });
   };
-  console.log(selectedCard);
 
   const players =
     selectedCard &&
