@@ -13,7 +13,7 @@ import PackInventory from "./PackInventory";
 export default function Inventory() {
   const userCards = useSelector((state) => state.users.value.cardsList);
   const userPacks = useSelector((state) => state.users.value.packsList);
-  const token = useSelector((state) => state.users.value.token)
+  const token = useSelector((state) => state.users.value.token);
   const [value, setValue] = useState("1");
 
   const handleChange = (event, newValue) => {
@@ -48,12 +48,10 @@ export default function Inventory() {
             eventsId,
             cardPrice: data ? data.price : null,
             subDocId: data._id,
-            userToken: data
-              ? data.userToken
-              : null,
+            userToken: data ? data.userToken : null,
             // Ajoutez d'autres champs si nécessaire
           };
-          tabCards.push(dataCard)
+          tabCards.push(dataCard);
         }
       }
     });
@@ -77,12 +75,7 @@ export default function Inventory() {
   const packsList =
     userPacks &&
     userPacks.map((pack) => {
-      const {
-        _id,
-        rarity,
-        stock,
-        packPrices,
-      } = pack;
+      const { _id, rarity, stock, packPrices } = pack;
 
       for (const data of packPrices) {
         if (data.userToken === token) {
@@ -92,24 +85,16 @@ export default function Inventory() {
             stock,
             packPrice: data ? data.price : null,
             subDocId: data._id,
-            userToken: data
-              ? data.userToken
-              : null,
+            userToken: data ? data.userToken : null,
             // Ajoutez d'autres champs si nécessaire
           };
-          tabPacks.push(dataPack)
+          tabPacks.push(dataPack);
         }
       }
     });
 
   const packPlayer = tabPacks.map((data, i) => {
-    return (
-      <PackInventory
-        key={i}
-        id={data.subDocId}
-        rarity={data.rarity}
-      />
-    );
+    return <PackInventory key={i} id={data.subDocId} rarity={data.rarity} />;
   });
 
   return (
@@ -131,6 +116,9 @@ export default function Inventory() {
                     height: "0px",
                     paddingTop: "50px",
                     textAlign: "center",
+                    overflow: "auto",
+                    width: "1367px",
+                    height: "100%",
                   }}
                   className={styles.cardContainer}
                   value="1"
@@ -142,6 +130,9 @@ export default function Inventory() {
                     height: "300px",
                     padding: "0px",
                     textAlign: "center",
+                    overflow: "auto",
+                    width: "1367px",
+                    height: "100%",
                   }}
                   className={styles.packContainer}
                   value="2"
