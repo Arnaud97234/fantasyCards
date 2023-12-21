@@ -38,7 +38,7 @@ function PendingGame(props) {
   };
 
   const handleSelectedCard = (name) => {
-    fetch(`http://localhost:3000/card/${name}`)
+    fetch(`http://localhost:3000/card/find/${name}`)
       .then((response) => response.json())
       .then((card) => {
         console.log(card);

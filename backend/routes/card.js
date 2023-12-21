@@ -7,7 +7,7 @@ const Team = require("../models/teams");
 
 require("../models/connection");
 
-router.get("/:name", (req, res)=> {
+router.get("/find/:name", (req, res)=> {
   Card.findOne({name: req.params.name})
   .then((data)=> {
     res.json({data})
