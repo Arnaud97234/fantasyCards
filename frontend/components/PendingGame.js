@@ -57,8 +57,16 @@ function PendingGame(props) {
           rarity={data.rarity}
           imgTeamAway={props.imgTeamAway}
         />
-      );
-    });
+      )
+    })
+
+  const startDate = new Date(props.startDate).toDateString()
+  const startHour = new Date(props.startDate).getHours()
+  const startMin = new Date(props.startDate).getMinutes()
+
+  const endDate = new Date(props.endDate).toDateString()
+  const endHour = new Date(props.startDate).getHours()
+  const endMin = new Date(props.startDate).getMinutes()
 
   return (
     <div className={styles.gameInfo}>
@@ -68,9 +76,8 @@ function PendingGame(props) {
         <span className={styles.separator}>VS</span>
         <img className={styles.img} src={imgTeamAway} /> {teamAway}
       </p>
-      <p>
-        Start date : {props.startDate} / End date : {props.endDate}
-      </p>
+      <p>Start: {startDate + ' ' + startHour + ':' + startMin}</p>
+      <p>End: {endDate + ' ' + endHour + ':' + endMin}</p>
       <p className={styles.info}>Status</p>
       <p>{props.status}</p>
       <p className={styles.info}>Select cards</p>
@@ -101,7 +108,7 @@ function PendingGame(props) {
           imgTeamAway={props.imgTeamAway}
         />
       </Modal>
-    </div>
+    </div >
   );
 }
 

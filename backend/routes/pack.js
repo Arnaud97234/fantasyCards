@@ -28,6 +28,7 @@ router.put("/open/:userToken/:subDocIdPack", async (req, res) => {
       $pull: {
         packPrices: { _id: req.params.subDocIdPack },
       },
+      stock: pack.stock - 1
     }
   );
 
@@ -41,7 +42,7 @@ router.put("/open/:userToken/:subDocIdPack", async (req, res) => {
             price: 0,
             userToken: req.params.userToken,
           },
-        },
+        }
       }
     );
 
@@ -56,7 +57,7 @@ router.put("/open/:userToken/:subDocIdPack", async (req, res) => {
       { $push: { cardsId: card._id } }
     );
   });
-  res.json({ result: true });
+  res.json({ result: true, newCards: cardsToAdd });
 });
 
 router.put("/buy/:buyertoken/:sellerToken/:subDocId", async (req, res) => {
