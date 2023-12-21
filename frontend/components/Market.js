@@ -54,6 +54,8 @@ function Market() {
       }
     });
 
+    console.log('v',tabCards)
+
   const cards =
     tabCards &&
     tabCards.map((data, i) => {
@@ -61,6 +63,8 @@ function Market() {
       return (
         <CardMarket
           key={i}
+          id={data.subDocId}
+          token={data.userToken}
           playerName={data.name}
           playerImage={data.picture}
           rarity={data.rarity}
@@ -110,7 +114,7 @@ function Market() {
     tabPacks &&
     tabPacks.map((data, i) => {
       console.log(data);
-      return <PackMarket key={i} rarity={data.rarity} />;
+      return <PackMarket key={i} id={data.subDocId} rarity={data.rarity} />;
     });
 
   return (
