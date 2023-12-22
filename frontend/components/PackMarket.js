@@ -2,7 +2,7 @@ import styles from "../styles/PackMarket.module.css";
 import { Modal, Button } from "antd";
 import BuyPackModal from "./modals/BuyPackModal.js";
 import { useState } from "react";
-function PackMarket({ rarity, id, token }) {
+function PackMarket({ rarity, id, token, price }) {
 
   const [buyPackVisible, setBuyPackVisible] = useState(false);
 
@@ -49,7 +49,6 @@ function PackMarket({ rarity, id, token }) {
         <img className={styles.img} src="./images/logo.png" />
       </div>
       <div className={styles.alignBtn}>
-        <button disabled className={styles.btn}>desc</button>
         <button className={styles.btn} onClick={handleModalBuyVisible}>buy</button>
         <Modal
         closeIcon={<CustomCloseIcon />}
@@ -59,7 +58,7 @@ function PackMarket({ rarity, id, token }) {
         visible={buyPackVisible}
         footer={null}
       >
-        <BuyPackModal id={id} sellerToken={token}/>
+        <BuyPackModal id={id} sellerToken={token} price={price}/>
       </Modal>
       </div>
     </div>

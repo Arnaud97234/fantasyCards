@@ -2,7 +2,7 @@ import styles from '../../styles/Header.module.css'
 import { useSelector } from 'react-redux'
 
 
-function BuyCardModal({id, sellerToken}) {
+function BuyCardModal({id, sellerToken, price}) {
     const token = useSelector((state)=> state.users.value.token)
 
     const handleBuyCard = () => {
@@ -19,6 +19,7 @@ function BuyCardModal({id, sellerToken}) {
     return (
         <div className={styles.modal}>
             <main className={styles.modalContainer}>
+                <p>Use {price} credits ?</p>
                 <button className={styles.modalButton} onClick={handleBuyCard}>Confirm</button>
             </main>
         </div>
