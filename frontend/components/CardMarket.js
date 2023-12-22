@@ -2,7 +2,7 @@ import styles from "../styles/CardMarket.module.css";
 import { Modal, Button } from "antd";
 import BuyCardModal from "./modals/BuyCardModal.js";
 import { useState } from "react";
-function CardMarket({ playerName, playerImage, rarity, id, token }) {
+function CardMarket({ playerName, playerImage, rarity, id, token, price }) {
 
   const [buyCardVisible, setBuyCardVisible] = useState(false);
 
@@ -50,7 +50,6 @@ function CardMarket({ playerName, playerImage, rarity, id, token }) {
           <p>{playerName}</p>
       </div>
       <div className={styles.alignBtn}>
-        <button disabled className={styles.btn}>Desc</button>
         <button className={styles.btn} onClick={handleModalVisible}>Buy</button>
       </div>
       <Modal
@@ -61,7 +60,7 @@ function CardMarket({ playerName, playerImage, rarity, id, token }) {
         visible={buyCardVisible}
         footer={null}
       >
-        <BuyCardModal id={id} sellerToken={token} />
+        <BuyCardModal id={id} sellerToken={token} price={price}/>
       </Modal>
     </div>
   );

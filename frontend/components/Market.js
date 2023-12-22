@@ -66,6 +66,7 @@ function Market() {
           playerName={data.name}
           playerImage={data.picture}
           rarity={data.rarity}
+          price={data.cardPrice}
         />
       );
     });
@@ -101,7 +102,6 @@ function Market() {
             userToken: data
               ? data.userToken
               : null,
-            // Ajoutez d'autres champs si nécessaire
           };
           tabPacks.push(dataPack)
         }
@@ -111,7 +111,7 @@ function Market() {
   const packs =
     tabPacks &&
     tabPacks.map((data, i) => {
-      return <PackMarket key={i} id={data.subDocId} token={data.userToken} rarity={data.rarity} />;
+      return <PackMarket key={i} id={data.subDocId} price={data.packPrice} token={data.userToken} rarity={data.rarity} />;
     });
 
   return (
