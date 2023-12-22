@@ -11,7 +11,7 @@ function AddCardInGameModal(props) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/card/${props.teamHomeId}/${props.teamAwayId}/${token}`
+      `https://fantasy-cards.vercel.app/card/${props.teamHomeId}/${props.teamAwayId}/${token}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -25,7 +25,7 @@ function AddCardInGameModal(props) {
     cardsTh.map((data, i) => {
       return (
         <CardGameTh
-        handleSelectedCard={props.handleSelectedCard}
+          handleSelectedCard={props.handleSelectedCard}
           key={i}
           playerName={data.name}
           playerImage={data.picture}
@@ -40,7 +40,7 @@ function AddCardInGameModal(props) {
     cardsTa.map((data, i) => {
       return (
         <CardGameTa
-        handleSelectedCard={props.handleSelectedCard}
+          handleSelectedCard={props.handleSelectedCard}
           key={i}
           playerName={data.name}
           playerImage={data.picture}

@@ -12,7 +12,7 @@ function Home() {
     const userToken = useSelector((state) => state.users.value.token)
     const router = useRouter()
     useEffect(() => {
-        fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
+        fetch(`https://fantasy-cards.vercel.app/users/user/${userToken}`).then(response => response.json()).then(data => {
             setUsername(data.username)
             setCredits(data.credits)
             setCards(data.cards)

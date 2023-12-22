@@ -5,22 +5,22 @@ import { useDispatch } from 'react-redux'
 import { removeCardToStore } from '../../reducers/users'
 
 
-function SellCardModal({id, idCard}) {
+function SellCardModal({ id, idCard }) {
 
     const dispatch = useDispatch()
     const [price, setPrice] = useState('')
-    const token = useSelector((state)=> state.users.value.token)
+    const token = useSelector((state) => state.users.value.token)
 
     const handleSetPrice = () => {
-        fetch(`http://localhost:3000/card/sell/${token}/${id}`, {
+        fetch(`https://fantasy-cards.vercel.app/card/sell/${token}/${id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({price : price}),
+            body: JSON.stringify({ price: price }),
         })
-        .then(response => response.json())
-        .then(data => {
-                
-        })
+            .then(response => response.json())
+            .then(data => {
+
+            })
     }
     return (
         <div className={styles.modal}>

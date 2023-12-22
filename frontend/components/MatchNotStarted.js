@@ -13,16 +13,16 @@ function MatchNotStarted() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/games/MatchNotStarted")
+    fetch("https://fantasy-cards.vercel.app/games/MatchNotStarted")
       .then((response) => response.json())
       .then((data) => {
-        
+
         dispatch(
           addPendingGamesToStore(
             data.games
           )
         );
-        
+
       });
   }, []);
 
@@ -42,7 +42,7 @@ function MatchNotStarted() {
 
   return (
     <div className={styles.container}>
-    {infoPending}
+      {infoPending}
     </div>
   );
 }

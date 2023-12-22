@@ -5,13 +5,13 @@ function BuyPackModal({ id, sellerToken, price }) {
   const token = useSelector((state) => state.users.value.token);
 
   const handleBuyPack = () => {
-    fetch(`http://localhost:3000/pack/buy/${token}/${sellerToken}/${id}`, {
+    fetch(`https://fantasy-cards.vercel.app/pack/buy/${token}/${sellerToken}/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, sellerToken, id }),
     })
       .then((response) => response.json())
-      .then((data) => {});
+      .then((data) => { });
   };
   return (
     <div className={styles.modal}>

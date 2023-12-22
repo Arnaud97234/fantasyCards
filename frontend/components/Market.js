@@ -8,7 +8,7 @@ function Market() {
   const [marketPacks, setMarketPacks] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/card/marketCards")
+    fetch("https://fantasy-cards.vercel.app/card/marketCards")
       .then((response) => response.json())
       .then((data) => {
         setMarketCards(data.card);
@@ -72,7 +72,7 @@ function Market() {
     });
 
   useEffect(() => {
-    fetch("http://localhost:3000/pack/marketPacks")
+    fetch("https://fantasy-cards.vercel.app/pack/marketPacks")
       .then((response) => response.json())
       .then((data) => {
         setMarketPacks(data.pack);

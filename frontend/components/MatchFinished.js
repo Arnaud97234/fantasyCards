@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PassGame from "./PassGame";
 import {
-    addFinishGamesToStore,
+  addFinishGamesToStore,
 } from "../reducers/games";
 
 
@@ -13,16 +13,16 @@ function MatchFinished() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3000/games/MatchFinished")
+    fetch("https://fantasy-cards.vercel.app/games/MatchFinished")
       .then((response) => response.json())
       .then((data) => {
-        
+
         dispatch(
-            addFinishGamesToStore(
+          addFinishGamesToStore(
             data.games
           )
         );
-        
+
       });
   }, []);
 
@@ -42,7 +42,7 @@ function MatchFinished() {
 
   return (
     <div className={styles.container}>
-    {infoFinish}
+      {infoFinish}
     </div>
   );
 }

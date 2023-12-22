@@ -17,7 +17,7 @@ function PassGame(props) {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3000/games/teams/${props.teamHomeId}/${props.teamAwayId}`
+      `https://fantasy-cards.vercel.app/games/teams/${props.teamHomeId}/${props.teamAwayId}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -37,7 +37,7 @@ function PassGame(props) {
   };
 
   const handleClaemCredits = () => {
-    fetch(`http://localhost:3000/games/creditReward/${token}`, {
+    fetch(`https://fantasy-cards.vercel.app/games/creditReward/${token}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token }),

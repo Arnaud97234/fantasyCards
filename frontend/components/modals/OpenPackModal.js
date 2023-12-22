@@ -6,7 +6,7 @@ function OpenPackModal({ id, sellerToken }) {
     const token = useSelector((state) => state.users.value.token)
 
     const handleBuyCard = () => {
-        fetch(`http://localhost:3000/pack/open/${token}/${id}`, {
+        fetch(`https://fantasy-cards.vercel.app/pack/open/${token}/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token, id }),
