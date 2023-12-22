@@ -47,8 +47,9 @@ function Home() {
                         <div className={styles.box} id={styles.gameBox}>
                             <h3 className={styles.contentTitle}>Games</h3>
                             <div className={styles.content}>
-                                <span className={styles.contentItem}>Game1: </span>
-                                <span className={styles.contentItem}>Game2: </span>
+                                <span className={styles.contentItem}>Game1: Strasbourg vs Lyon</span>
+                                <span className={styles.contentItem}>Game2: Paris Saint Germain vs Lorient</span>
+                                <span className={styles.contentItem}>Game3: Rennes vs Metz</span>
                             </div>
                             <button className={styles.contentButton} onClick={() => { handleGame() }}>View more</button>
                         </div>
