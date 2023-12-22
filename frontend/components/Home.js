@@ -12,18 +12,20 @@ function Home() {
     const userToken = useSelector((state) => state.users.value.token)
     const router = useRouter()
     useEffect(() => {
-        return () => {
-            fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
-                setUsername(data.username)
-                setCredits(data.credits)
-                setCards(data.cards)
-                setPacks(data.packs)
-            })
-        }
+        fetch(`http://localhost:3000/users/user/${userToken}`).then(response => response.json()).then(data => {
+            setUsername(data.username)
+            setCredits(data.credits)
+            setCards(data.cards)
+            setPacks(data.packs)
+        })
     }, [])
 
-    const handleGame = () => {
+    const handlePast = () => {
         router.push("/gameFinished")
+    }
+
+    const handleOngoing = () => {
+        router.push("/gameNotStarted")
     }
 
     const handleInventory = () => {
@@ -50,7 +52,10 @@ function Home() {
                                 <span className={styles.contentItem}>Game1: </span>
                                 <span className={styles.contentItem}>Game2: </span>
                             </div>
-                            <button className={styles.contentButton} onClick={() => { handleGame() }}>View more</button>
+                            <div className={styles.buttonContainer}>
+                                <button className={styles.contentButton} onClick={() => { handlePast() }}>Past games</button>
+                                <button className={styles.contentButton} onClick={() => { handleOngoing() }}>Ongoing games</button>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.box} id={styles.inventoryBox}>
